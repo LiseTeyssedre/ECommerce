@@ -26,7 +26,7 @@ public class Produit {
 	private String description;
 	private Double prix;
 	private int quantite;
-	private boolean selectionne;
+	private boolean selectionne=false;
 	private byte[] photo;
 
 	// transformation de l'association UML en Java
