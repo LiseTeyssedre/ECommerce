@@ -27,6 +27,7 @@ public class Administrateur {
 	// association UML en Java
 	@OneToMany(mappedBy = "admin", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
 	private List<Produit> listeProduit;
+	@OneToMany(mappedBy = "admin", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
 	private List<Categorie> listeCategorie;
 
 	// constructeurs
