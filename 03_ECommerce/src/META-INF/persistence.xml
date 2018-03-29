@@ -1,5 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 	<persistence-unit name="03_ECommerce">
+	
+	<!--  déclaration du fournisseur de l'implementation de jpa -->
+	<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider> <!-- dans eclipse link - eclipse link jar -eclipse persistance jpa - persistance provider -->
+	<!-- liste les classes persistantes : les classes annotées par @entity -->
+	<class>fr.adaming.model.Produit</class>
+	
+	<!-- specifier les infos de la connexion à la bd  -->
+	<properties>
+	<property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/db_ecommerce"/>
+	<property name="javax.persistence.jdbc.user" value="root"/>
+	<property name="javax.persistence.jdbc.password" value="root"/>
+	<property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+	
+	
+	
+	<!-- spécifier la stratégie pour la création des tables -->
+	<property name="javax.persistence.schema-generation.database.action" value="create-or-extend-tables"/> <!-- pour créer la table le premiere fois : grace a create ; extends table = pour si on modifie les entetes des colones, il prends les modifs en compte-->
+	
+	<!-- les valeurs possibles : create; create-or-extends-table; drop = suprrim table ; drop-and-create= supprime la table et en cree une nouvelle -->
+	</properties>
+	
+	
+	
 	</persistence-unit>
 </persistence>
