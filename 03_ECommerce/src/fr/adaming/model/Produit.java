@@ -1,28 +1,43 @@
 package fr.adaming.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="produits")
+@Table(name = "produits")
 public class Produit {
 
-	
 	// déclaration des attributs
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id_p")
-	private int idProduit;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "id_p")
+	private Long idProduit;
 	private String designation;
 	private String description;
 	private Double prix;
 	private int quantite;
 	private boolean selectionne;
 	private byte[] photo;
+
+	// transformation de l'association UML en Java
+	@ManyToOne
+	private Categorie categorie;
+
+	@ManyToOne
+	private Administrateur admin;
+
+	@OneToMany(mappedBy = "produit", cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+	private List<LigneCommande> listeLigneCommande;
 
 	// déclaration des constructeurs
 	public Produit() {
@@ -40,7 +55,7 @@ public class Produit {
 		this.photo = photo;
 	}
 
-	public Produit(int idProduit, String designation, String description, Double prix, int quantite,
+	public Produit(long idProduit, String designation, String description, Double prix, int quantite,
 			boolean selectionne, byte[] photo) {
 		super();
 		this.idProduit = idProduit;
@@ -53,11 +68,11 @@ public class Produit {
 	}
 
 	// déclaration des getters et setters
-	public int getIdProduit() {
+	public long getIdProduit() {
 		return idProduit;
 	}
 
-	public void setIdProduit(int idProduit) {
+	public void setIdProduit(long idProduit) {
 		this.idProduit = idProduit;
 	}
 
@@ -107,6 +122,34 @@ public class Produit {
 
 	public void setPhoto(byte[] photo) {
 		this.photo = photo;
+	}
+
+	public Categorie getCategorie() {
+		return categorie;
+	}
+
+	public void setCategorie(Categorie categorie) {
+		this.categorie = categorie;
+	}
+
+	public Administrateur getAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(Administrateur admin) {
+		this.admin = admin;
+	}
+
+	public List<LigneCommande> getListeLigneCommande() {
+		return listeLigneCommande;
+	}
+
+	public void setListeLigneCommande(List<LigneCommande> listeLigneCommande) {
+		this.listeLigneCommande = listeLigneCommande;
+	}
+
+	public void setIdProduit(Long idProduit) {
+		this.idProduit = idProduit;
 	}
 
 }
