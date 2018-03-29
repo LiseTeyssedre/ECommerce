@@ -16,7 +16,5 @@ public interface ICategorieDao {
 	
 	public int updateCategorie ();
 	
-	
-	
 	public int deleteClient ();
 }
