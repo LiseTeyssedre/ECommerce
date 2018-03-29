@@ -6,7 +6,6 @@ import fr.adaming.model.Administrateur;
 import fr.adaming.model.Categorie;
 import fr.adaming.model.Client;
 
-
 public interface ICategorieDao {
 	
 	public List<Categorie> getListCategorie (Administrateur a);
