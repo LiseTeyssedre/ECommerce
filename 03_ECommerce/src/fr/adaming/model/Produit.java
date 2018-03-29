@@ -12,7 +12,6 @@ import javax.persistence.Table;
 public class Produit {
 
 	
-	
 	// déclaration des attributs
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
