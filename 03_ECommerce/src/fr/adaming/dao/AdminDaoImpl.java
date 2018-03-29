@@ -24,7 +24,9 @@ public class AdminDaoImpl implements IAdminDao {
 		// Passage des paramètres
 		query.setParameter("pMail", a.getMail());
 		query.setParameter("pMdp", a.getMdp());
-		return null;
+		
+		// Envoyer la requête et récupérer l'Agent
+		return (Administrateur) query.getSingleResult();
 	}
 
 }
