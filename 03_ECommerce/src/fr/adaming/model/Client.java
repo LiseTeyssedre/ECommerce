@@ -28,7 +28,7 @@ public class Client {
 	//Transformation de l'association UML en Java
 	@OneToMany(mappedBy="client", cascade=CascadeType.REMOVE, fetch=FetchType.EAGER)
 	private List<Commande> listeCommande;
-	
+	//
 	
 	// Déclaration des constructeurs 
 	
