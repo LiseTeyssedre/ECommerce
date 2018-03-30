@@ -35,6 +35,7 @@ public class CategorieManagedBean implements Serializable {
 	private Administrateur admin;
 	private UploadedFile uf;
 
+	
 	// constructeur
 	public CategorieManagedBean() {
 		this.categorie = new Categorie();
