@@ -34,12 +34,9 @@ public class CategorieManagedBean implements Serializable {
 	HttpSession maSession;
 	private Administrateur admin;
 	
-
-	
 	// constructeur
 	public CategorieManagedBean() {
 		this.categorie = new Categorie();
-	
 	}
 
 	@PostConstruct
