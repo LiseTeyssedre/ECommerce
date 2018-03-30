@@ -28,25 +28,25 @@ public class CategorieServiceImpl implements ICategorieService {
 	@Override
 	public Categorie addCategorie(Categorie cat) {
 		
-		return null;
+		return categorieDao.addCategorie(cat);
 	}
 
 	@Override
 	public Categorie searchCategorie(Categorie cat) {
 		
-		return null;
+		return categorieDao.searchCategorie(cat);
 	}
 
 	@Override
 	public int updateCategorie(Categorie cat) {
 		
-		return 0;
+		return categorieDao.updateCategorie(cat);
 	}
 
 	@Override
 	public int deleteCategorie(Categorie cat) {
 		
-		return 0;
+		return categorieDao.deleteCategorie(cat);
 	}
 
 
