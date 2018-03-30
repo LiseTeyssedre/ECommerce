@@ -1,7 +1,9 @@
 package fr.adaming.managedBean;
 
 import java.io.Serializable;
+
 import java.util.List;
+
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -9,6 +11,8 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
+
+import org.jboss.resteasy.plugins.delegates.NewCookieHeaderDelegate;
 
 import fr.adaming.model.Categorie;
 import fr.adaming.model.Client;
@@ -25,6 +29,7 @@ public class CategorieManagedBean implements Serializable {
 	// attributs
 	private Categorie categorie;
 	private List<Categorie> listeCategorie;
+
 
 	// constructeur
 	public CategorieManagedBean() {
@@ -61,6 +66,7 @@ public class CategorieManagedBean implements Serializable {
 		}
 		return "categorie.xhtml";
 	}
+
 
 	public String ajouteCategorie() {
 		Categorie cat = categorieService.addCategorie(this.categorie);
