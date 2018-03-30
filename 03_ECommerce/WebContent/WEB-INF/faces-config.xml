@@ -5,4 +5,30 @@
     xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd"
     version="2.2">
 
+<!-- regles de navigation pour le login administrateur -->
+<navigation-rule>
+<from-view-id>/loginAdmin.xhtml</from-view-id>
+<navigation-case>
+<from-outcome>succes</from-outcome>
+<to-view-id>/accueilAdmin.xhtml</to-view-id>
+</navigation-case>
+<navigation-case>
+<from-outcome>echec</from-outcome>
+<to-view-id>/loginAdmin.xhtml</to-view-id>
+</navigation-case>
+</navigation-rule>
+
+<!-- regles de navigation pour le login client -->
+<navigation-rule>
+<from-view-id>/loginClient.xhtml</from-view-id>
+<navigation-case>
+<from-outcome>succes</from-outcome>
+<to-view-id>/accueilClient.xhtml</to-view-id>
+</navigation-case>
+<navigation-case>
+<from-outcome>echec</from-outcome>
+<to-view-id>/logiClient.xhtml</to-view-id>
+</navigation-case>
+</navigation-rule>
+
 </faces-config>

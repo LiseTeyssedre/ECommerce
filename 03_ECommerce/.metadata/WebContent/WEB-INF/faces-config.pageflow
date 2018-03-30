@@ -1,2 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pageflow:Pageflow xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf15223160089941" configfile="/03_ECommerce/WebContent/WEB-INF/faces-config.xml"/>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf15223160089941" configfile="/03_ECommerce/WebContent/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="loginAdmin.xhtml" id="pf15224008419810" referenceLink="//@navigationRule.1/@navigationCase.1/@toViewId|" outlinks="pf15224008419811 pf15224008419812" inlinks="pf15224008419812" path="/loginAdmin.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="accueilAdmin.xhtml" id="pf15224008419813" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" inlinks="pf15224008419811" path="/accueilAdmin.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="loginC.xhtml" id="pf15224010865304" referenceLink="//@navigationRule.1/@fromViewId|" outlinks="pf15224010865305 pf15224010865306" path="/loginClient.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="accueilClient.xhtml" id="pf15224010865307" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" inlinks="pf15224010865305" path="/accueilClient.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="logiClient.xhtml" id="pf15224010865308" referenceLink="//@navigationRule.1/@navigationCase.1/@toViewId|" inlinks="pf15224010865306" path="/logiClient.xhtml"/>
+  <links id="pf15224008419811" target="pf15224008419813" source="pf15224008419810" outcome="succes"/>
+  <links id="pf15224008419812" target="pf15224008419810" source="pf15224008419810" outcome="echec"/>
+  <links id="pf15224010865305" target="pf15224010865307" source="pf15224010865304" outcome="succes"/>
+  <links id="pf15224010865306" target="pf15224010865308" source="pf15224010865304" outcome="echec"/>
+</pageflow:Pageflow>

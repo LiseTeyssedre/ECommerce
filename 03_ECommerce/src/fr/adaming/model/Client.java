@@ -24,6 +24,7 @@ public class Client {
 	private String adresse;
 	private String email;
 	private String tel;
+	private String mdp;
 	
 	//Transformation de l'association UML en Java
 	@OneToMany(mappedBy="client", cascade=CascadeType.REMOVE, fetch=FetchType.EAGER)
@@ -35,20 +36,22 @@ public class Client {
 	public Client() {
 		super();
 	}
-	public Client(String nomClient, String adresse, String email, String tel) {
+	public Client(String nomClient, String adresse, String email, String tel, String mdp) {
 		super();
 		this.nomClient = nomClient;
 		this.adresse = adresse;
 		this.email = email;
 		this.tel = tel;
+		this.mdp=mdp;
 	}
-	public Client(Long idClient, String nomClient, String adresse, String email, String tel) {
+	public Client(Long idClient, String nomClient, String adresse, String email, String tel, String mdp) {
 		super();
 		this.idClient = idClient;
 		this.nomClient = nomClient;
 		this.adresse = adresse;
 		this.email = email;
 		this.tel = tel;
+		this.mdp=mdp;
 	}
 	
 	//Déclaration des getters et des setters 
@@ -88,6 +91,12 @@ public class Client {
 	}
 	public void setListeCommande(List<Commande> listeCommande) {
 		this.listeCommande = listeCommande;
+	}
+	public String getMdp() {
+		return mdp;
+	}
+	public void setMdp(String mdp) {
+		this.mdp = mdp;
 	}
 	
 	
