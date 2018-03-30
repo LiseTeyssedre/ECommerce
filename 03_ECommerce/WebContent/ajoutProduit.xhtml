@@ -21,7 +21,7 @@
 Designation : <h:inputText value="#{prMB.produit.designation}"/>
 Description : <h:inputText value="#{prMB.produit.description}" />
 <p:outputLabel value="Catégorie :" for="idCategorie" />
-			<p:autoComplete id="idCategorie" dropdown="true" value="#{catMB.categorie}" completeMethod="#{catMB.listeCategorie}" />
+			<p:autoComplete id="idCategorie" dropdown="true" value="#{catMB.listeCategorie}" completeMethod="#{catMB.afficherCategorie}" />
 				
 				
 Prix : <h:inputText value="#{prMB.produit.prix}" />
