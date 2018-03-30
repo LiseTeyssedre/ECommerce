@@ -14,6 +14,23 @@
 
 <h:body>
 
+<h:form>
+
+<h:panelGrid colums="2">
+Mail:<h:inputText value="#{clMB.client.email}"/>
+Mot de Passe : <h:inputSecret value="#{clMB.client.mdp}"/>
+<h:commandButton value="se connecter" action="#{clMB.seConnecter}"/>
+
+<h:messages style="color:red"/>
+
+</h:panelGrid>
+
+
+</h:form>
+
+
+
+
 </h:body>
 
 </html>

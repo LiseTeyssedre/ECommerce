@@ -16,7 +16,7 @@ public class ClientDaoImpl implements IClientDao {
 	
 	
 	@Override
-	public Client isExixt(Client cl) {
+	public Client isExist(Client cl) {
 		//La requete JPQL
 		String req="SELECT cl FROM Client as cl WHERE cl.mail=:pMail AND cl.mdp=:pMdp";
 		

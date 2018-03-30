@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.ejb.EJB;
-
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
@@ -15,7 +15,7 @@ import fr.adaming.model.Produit;
 import fr.adaming.service.IAdminService;
 import fr.adaming.service.IProduitService;
 
-@ManagedBean
+@ManagedBean(name="aMB")
 @RequestScoped
 public class AdminManagedBean implements Serializable {
 
@@ -91,8 +91,11 @@ public class AdminManagedBean implements Serializable {
 			// avoir la liste des produits dans la session
 			FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("produitList",
 					this.listeProduits);
-
+			
 			return "succes";
+			
+			
+			
 		} else {
 			return "echec";
 		}

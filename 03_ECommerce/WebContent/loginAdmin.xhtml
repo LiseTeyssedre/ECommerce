@@ -13,7 +13,27 @@
 </h:head>
 
 <h:body>
-login admin
+
+<h:form>
+
+<h:panelGrid colums="2">
+Mail:<h:inputText value="#{aMB.admin.mail}"/>
+Mot de Passe : <h:inputSecret value="#{aMB.admin.mdp}"/>
+<h:commandButton value="se connecter" action="#{aMB.seConnecter}"/>
+
+<h:messages style="color:red"/>
+
+</h:panelGrid>
+
+
+</h:form>
+
+
+
+
+
+
+
 </h:body>
 
 </html>
