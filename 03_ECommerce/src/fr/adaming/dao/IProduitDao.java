@@ -8,9 +8,10 @@ import fr.adaming.model.Produit;
 
 public interface IProduitDao {
 	
-	
-	public List<Produit> getAllProduit();
-	public int deleteProduit(Administrateur a);
+	public Produit addProduit(Produit produit); // OK
+	public int deleteProduit(Produit produit); // OK
+	public int updateProduit(Produit produit); // OK
+	public List<Produit> getAllProduit(); // OK 
 	public List<Produit> getBySelection(Client cl);
 	public int addProduitPanier(Client cl);
 	public int deleteProduitPanier(Client cl);

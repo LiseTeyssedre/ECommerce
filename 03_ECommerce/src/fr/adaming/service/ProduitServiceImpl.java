@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.ejb.EJB;
 
+import fr.adaming.dao.IProduitDao;
+import fr.adaming.dao.ProduitDaoImpl;
 import fr.adaming.model.Administrateur;
 import fr.adaming.model.Client;
 import fr.adaming.model.Produit;
@@ -13,12 +15,12 @@ public class ProduitServiceImpl implements IProduitService{
 	
 	// Transformation de l'association UML en JAVA
 	@EJB // Injecter le produit Dao
-	private IProduitService prodService;
+	private IProduitDao prodDao;
 	
 	
 	@Override
 	public List<Produit> getAllProduit() {
-		return prodService.getAllProduit();
+		return prodDao.getAllProduit();
 	}
 	
 	
@@ -28,9 +30,9 @@ public class ProduitServiceImpl implements IProduitService{
 	//==============================================================================
 	
 	@Override
-	public int deleteProduit(Administrateur a) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int deleteProduit(Produit produit, Administrateur a) {
+		produit.setAdmin(a);
+		return prodDao.updateProduit(produit);
 	}
 	//==============================================================================
 	//==============================================================================
@@ -58,6 +60,28 @@ public class ProduitServiceImpl implements IProduitService{
 	public int deleteProduitPanier(Client cl) {
 		// TODO Auto-generated method stub
 		return 0;
+	}
+
+	//==============================================================================
+	//==============================================================================
+	//==============================================================================
+	
+
+	@Override
+	public Produit addProduit(Produit produit, Administrateur a) {
+		produit.setAdmin(a);
+		return prodDao.addProduit(produit);
+	}
+	//==============================================================================
+	//==============================================================================
+	//==============================================================================
+	
+
+
+	@Override
+	public int updateProduit(Produit produit, Administrateur a) {
+		produit.setAdmin(a);
+		return prodDao.updateProduit(produit);
 	}
 
 }
