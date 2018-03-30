@@ -22,7 +22,7 @@ public class CategorieServiceImpl implements ICategorieService {
 	@Override
 	public List<Categorie> getListCategorie() {
 
-		System.out.println("--------------------- service");
+		
 		return categorieDao.getListCategorie();
 	}
 

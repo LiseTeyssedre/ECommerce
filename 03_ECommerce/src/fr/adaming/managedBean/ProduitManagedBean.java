@@ -34,13 +34,15 @@ public class ProduitManagedBean implements Serializable {
 	HttpSession maSession;
 	private List<Categorie> listeCategorie;
 	public ProduitManagedBean() {
-		super();
+		this.produit=new Produit();
+		this.produit.setCategorie(new Categorie());
 	}
 
 	// Récupération de la session existante
 	@PostConstruct // Pour que la méthode s'exécute juste après l'instanciation
 					// du managed bean
 	public void init() {
+		this.listeCategorie=catService.getListCategorie();
 		// Récupérer la session
 		this.maSession = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
 		// Récupérer l'admin stocké dans la session
@@ -66,18 +68,24 @@ public class ProduitManagedBean implements Serializable {
 		this.admin = admin;
 	}
 
+	
+
+	
+	
 	// Développement de la méthode Ajouter un Produit
 	public String ajouterProduit() {
+		System.out.println("--------------------- mb");
 		Produit prodAjout = prodService.addProduit(this.produit, this.admin);
-		if (prodAjout.getIdProduit() != 0) {
-			// Récupérer la nouvelle liste de produits
-			List<Produit> liste = prodService.getAllProduit();
-			// Mettre à jour la liste dans la session
-			maSession.setAttribute("produitsListe", liste);
-			return "accueil";
-		} else {
-			return "accueil";
-		}
+		return "accueil";
+//		if (prodAjout.getIdProduit() != 0) {
+//			// Récupérer la nouvelle liste de produits
+//			List<Produit> liste = prodService.getAllProduit();
+//			// Mettre à jour la liste dans la session
+//			maSession.setAttribute("produitsListe", liste);
+//			return "accueil";
+//		} else {
+//			return "accueil";
+//		}
 	}
 
 	// Développement de la méthode Supprimer un Produit

@@ -61,9 +61,9 @@ public class CategorieManagedBean implements Serializable {
 	// méthodes métier
 	public String afficheCategorie() {
 		this.listeCategorie = categorieService.getListCategorie();
-		for (Categorie c : listeCategorie) {
-			System.out.println(c);
-		}
+	
+		
+		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("catListeSession", this.listeCategorie);
 		return "categorie.xhtml";
 	}
 

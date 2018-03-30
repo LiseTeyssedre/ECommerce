@@ -24,7 +24,7 @@ public class Produit {
 	private Long idProduit;
 	private String designation;
 	private String description;
-	private Double prix;
+	private double prix;
 	private int quantite;
 	private boolean selectionne=false;
 	private byte[] photo;
@@ -44,7 +44,7 @@ public class Produit {
 		super();
 	}
 
-	public Produit(String designation, String description, Double prix, int quantite, boolean selectionne,
+	public Produit(String designation, String description, double prix, int quantite, boolean selectionne,
 			byte[] photo) {
 		super();
 		this.designation = designation;
@@ -55,7 +55,7 @@ public class Produit {
 		this.photo = photo;
 	}
 
-	public Produit(long idProduit, String designation, String description, Double prix, int quantite,
+	public Produit(long idProduit, String designation, String description, double prix, int quantite,
 			boolean selectionne, byte[] photo) {
 		super();
 		this.idProduit = idProduit;
@@ -92,11 +92,11 @@ public class Produit {
 		this.description = description;
 	}
 
-	public Double getPrix() {
+	public double getPrix() {
 		return prix;
 	}
 
-	public void setPrix(Double prix) {
+	public void setPrix(double prix) {
 		this.prix = prix;
 	}
 

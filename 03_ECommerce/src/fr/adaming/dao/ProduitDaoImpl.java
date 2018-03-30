@@ -92,6 +92,7 @@ public class ProduitDaoImpl implements IProduitDao {
 
 	@Override
 	public Produit addProduit(Produit produit) {
+		System.out.println("--------------------- dao");
 		// Création de la requête
 		em.persist(produit);
 		return produit;

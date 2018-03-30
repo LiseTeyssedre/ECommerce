@@ -20,7 +20,7 @@ public class CategorieDaoImpl implements ICategorieDao {
 	@Override
 	public List<Categorie> getListCategorie() {
 
-		System.out.println("--------------------- dao");
+		
 		// la requete jpql
 		String req = "SELECT cat FROM Categorie as cat";
 
@@ -34,6 +34,7 @@ public class CategorieDaoImpl implements ICategorieDao {
 
 	@Override
 	public Categorie addCategorie(Categorie cat) {
+		
 		em.persist(cat);
 		return cat;
 	}

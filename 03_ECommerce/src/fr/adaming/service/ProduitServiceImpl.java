@@ -71,6 +71,7 @@ public class ProduitServiceImpl implements IProduitService{
 
 	@Override
 	public Produit addProduit(Produit produit, Administrateur a) {
+		System.out.println("--------------------- service");
 		produit.setAdmin(a);
 		return prodDao.addProduit(produit);
 	}

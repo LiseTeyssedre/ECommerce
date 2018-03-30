@@ -18,22 +18,23 @@
 	<h:form>
 
 		<h:panelGrid columns="2">
-Designation : <h:inputText value="#{prMB.produit.designation}"/>
-Description : <h:inputText value="#{prMB.produit.description}" />
-Catégorie : 
-<h:selectOneMenu value="#{prMB.produit.categorie}">
-	<f:selectItem value="#{catMB.listeCategorie}" var="c" itemLabel="#{prMB.produit.categorie.nomCategorie}" itemValue="#{c}"/>
-</h:selectOneMenu>
+			Designation : <h:inputText value="#{prMB.produit.designation}"/>
+			Description : <h:inputText value="#{prMB.produit.description}" />
+			Catégorie : 
+						<h:selectOneMenu  value="#{prMB.produit.categorie}">
+								<f:selectItems value="#{sessionScope.catListeSession}" var="c" itemLabel="#{c.nomCategorie}" itemValue="#{c}"/>
+						</h:selectOneMenu>
 
-Prix : <h:inputText value="#{prMB.produit.prix}" />
+			Prix : <h:inputText value="#{prMB.produit.prix}" />
 
-Quantité en stock : <h:inputText value="#{prMB.produit.quantite}" />
-Photo : 
-</h:panelGrid>
+			Quantité en stock : <h:inputText value="#{prMB.produit.quantite}" />
+			
+			<h:commandButton value="Ajouter" action="#{prMB.ajouterProduit}"></h:commandButton>
+			 
+		</h:panelGrid>
 
 
 
-		<h:commandButton value="Ajouter" action="#{prMB.ajouterProduit}"></h:commandButton>
 	</h:form>
 
 
