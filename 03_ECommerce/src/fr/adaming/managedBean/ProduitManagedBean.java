@@ -72,7 +72,7 @@ public class ProduitManagedBean implements Serializable {
 	// Développement de la méthode Ajouter un Produit
 	public String ajouterProduit() {
 		//System.out.println("--------------------- id de la cat " + this.produit.getCategorie().getIdCategorie());
-		Produit prodAjout = prodService.addProduit(this.produit, this.admin);
+		Produit prodAjout = prodService.addProduit(this.produit);
 		return "accueil";
 		// if (prodAjout.getIdProduit() != 0) {
 		// // Récupérer la nouvelle liste de produits

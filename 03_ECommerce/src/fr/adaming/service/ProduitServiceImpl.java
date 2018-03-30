@@ -75,12 +75,10 @@ public class ProduitServiceImpl implements IProduitService{
 	
 
 	@Override
-	public Produit addProduit(Produit produit, Administrateur a) {
+	public Produit addProduit(Produit produit) {
 		System.out.println("--------------------- service");
 		// recuperer la cat de la bd 
 		Categorie caOut=catDao.searchCategorie(produit.getCategorie());
-		
-		produit.setAdmin(a);
 		produit.setCategorie(caOut);
 		return prodDao.addProduit(produit);
 	}
