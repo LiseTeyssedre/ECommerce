@@ -11,9 +11,11 @@ import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
+import javax.servlet.http.HttpSession;
 
 import org.jboss.resteasy.plugins.delegates.NewCookieHeaderDelegate;
 
+import fr.adaming.model.Administrateur;
 import fr.adaming.model.Categorie;
 import fr.adaming.model.Client;
 import fr.adaming.service.ICategorieService;
@@ -29,7 +31,8 @@ public class CategorieManagedBean implements Serializable {
 	// attributs
 	private Categorie categorie;
 	private List<Categorie> listeCategorie;
-
+	HttpSession maSession;
+	private Administrateur admin;
 
 	// constructeur
 	public CategorieManagedBean() {
@@ -38,7 +41,12 @@ public class CategorieManagedBean implements Serializable {
 
 	@PostConstruct
 	public void init() {
-	
+		this.listeCategorie = categorieService.getListCategorie();
+		// recupérer la session
+		this.maSession = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+		// récupérer l'admin stocké dans la session
+		this.admin = (Administrateur) this.maSession.getAttribute("adminSession");
+
 	}
 
 	// getters et setters
@@ -61,28 +69,57 @@ public class CategorieManagedBean implements Serializable {
 	// méthodes métier
 	public String afficheCategorie() {
 		this.listeCategorie = categorieService.getListCategorie();
-	
-		
-		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("catListeSession", this.listeCategorie);
+
+		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("catListeSession",
+				this.listeCategorie);
 		return "categorie.xhtml";
 	}
 
-
+	// AJOUTER UNE CATEGORIE
 	public String ajouteCategorie() {
-		Categorie cat = categorieService.addCategorie(this.categorie);
 
-		if (cat.getIdCategorie() != 0) {
+		Categorie catAjout = categorieService.addCategorie(this.categorie);
+
+		if (catAjout.getIdCategorie() != 0) {
 			// récupérer la nouvelle liste
 			List<Categorie> listeCategorie = categorieService.getListCategorie();
+			// mettre a jour la liste dans la session
+			maSession.setAttribute("categorieListe", listeCategorie);
 
-			return "categorie.xhtml";
+			return "accueilCat.xhtml";
 		} else {
 
 			// le message en cas d'echec
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("ajout impossible"));
-			return "ajout.xhtml";
+			return "ajoutCat.xhtml";
 		}
 
+	}
+
+	// MODIFIER UNE CATEGORIE
+	public String modifCategorie() {
+		int verif = categorieService.updateCategorie(this.categorie);
+
+		if (verif != 0) {
+			// récupérer la nouvelle liste
+			List<Categorie> listeCategorie = categorieService.getListCategorie();
+			// mettre a jour la liste dans la session
+			maSession.setAttribute("categorieListe", listeCategorie);
+
+			return "accueilCat.xhtml";
+		} else {
+			// le message en cas d'echec
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("modification impossible"));
+			return "modifCat.xhtml";
+		}
+	}
+	
+	// RECHERCHER UNE CATEGORIE 
+	public String chercheCategorie() {
+		
+		Categorie catRec = categorieService.
+		
+		return null;
 	}
 
 }

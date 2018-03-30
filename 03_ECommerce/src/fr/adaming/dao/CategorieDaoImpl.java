@@ -41,10 +41,11 @@ public class CategorieDaoImpl implements ICategorieDao {
 
 	@Override
 	public Categorie searchCategorie(Categorie cat) {
-
-		return null;
+	
+		return em.find(Categorie.class, cat.getIdCategorie());
 	}
 
+	
 	@Override
 	public int updateCategorie(Categorie cat) {
 		String req2 = "UPDATE Categorie cat SET cat.nomCategorie=:pNom, cat.photo=:pPhoto, cat.description=:pDescription";
