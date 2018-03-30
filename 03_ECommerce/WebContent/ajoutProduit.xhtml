@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>PAGE AJOUT PRODUIT</title>
+</h:head>
+
+<h:body>
+
+<h2>AJOUTER UN PRODUIT</h2>
+
+	<h:form>
+
+		<h:panelGrid columns="2">
+Designation : <h:inputText value="#{prMB.produit.designation}"/>
+Description : <h:inputText value="#{prMB.produit.description}" />
+<p:outputLabel value="Catégorie :" for="idCategorie" />
+			<p:autoComplete id="idCategorie" dropdown="true" value="#{catMB.categorie}" completeMethod="#{catMB.listeCategorie}" />
+				
+				
+Prix : <h:inputText value="#{prMB.produit.prix}" />
+
+Quantité en stock : <h:inputText value="#{prMB.produit.quantite}" />
+Photo : 
+</h:panelGrid>
+
+
+
+		<h:commandButton value="Ajouter" action="#{prMB.ajouterProduit}"></h:commandButton>
+	</h:form>
+
+
+</h:body>
+</html>
