@@ -4,8 +4,9 @@ import java.io.Serializable;
 import java.util.List;
 
 import javax.ejb.EJB;
-import javax.enterprise.context.RequestScoped;
+
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.RequestScoped;
 
 import fr.adaming.model.Administrateur;
 import fr.adaming.model.Produit;
@@ -29,14 +30,9 @@ public class AdminManagedBean implements Serializable {
 	
 	
 	public AdminManagedBean() {
-		this.setAdmin(new Administrateur());;
+		this.admin=new Administrateur();
 	}
 
-
-	public AdminManagedBean(IAdminService adminService) {
-		super();
-		this.adminService = adminService;
-	}
 
 
 	public IAdminService getAdminService() {

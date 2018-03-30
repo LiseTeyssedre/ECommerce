@@ -26,9 +26,8 @@ public class CategorieManagedBean implements Serializable {
 	private List<Categorie> listeCategorie;
 
 	// constructeur
-	public CategorieManagedBean(Categorie categorie) {
-		super();
-		this.categorie = categorie;
+	public CategorieManagedBean() {
+		this.categorie = new Categorie();
 	}
 
 	// getters et setters
