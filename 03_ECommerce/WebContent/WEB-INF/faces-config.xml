@@ -31,4 +31,21 @@
 </navigation-case>
 </navigation-rule>
 
+<!-- regles de navigation pour la modification de categorie -->
+<navigation-rule>
+<from-view-id>/modifCat.xhtml</from-view-id>
+<navigation-case>
+<from-outcome>ok</from-outcome>
+<to-view-id>/accueilAdmin.xhtml</to-view-id>
+</navigation-case>
+<navigation-case>
+<from-outcome>stop</from-outcome>
+<to-view-id>/accueilAdmin.xhtml</to-view-id>
+</navigation-case>
+</navigation-rule>
+
+
+
+
+
 </faces-config>

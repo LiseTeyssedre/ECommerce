@@ -48,7 +48,7 @@ public class CategorieDaoImpl implements ICategorieDao {
 	
 	@Override
 	public int updateCategorie(Categorie cat) {
-		String req2 = "UPDATE Categorie cat SET cat.nomCategorie=:pNom, cat.photo=:pPhoto, cat.description=:pDescription";
+		String req2 = "UPDATE Categorie cat SET cat.nomCategorie=:pNom, cat.photo=:pPhoto, cat.description=:pDescription WHERE cat.idCategorie=:pId";
 
 		Query query = em.createQuery(req2);
 
@@ -56,6 +56,7 @@ public class CategorieDaoImpl implements ICategorieDao {
 		query.setParameter("pNom", cat.getNomCategorie());
 		query.setParameter("pPhoto", cat.getPhoto());
 		query.setParameter("pDescription", cat.getDescription());
+		query.setParameter("pId", cat.getIdCategorie());
 
 		// envoyer la requete
 		return query.executeUpdate();
@@ -63,11 +64,14 @@ public class CategorieDaoImpl implements ICategorieDao {
 
 	@Override
 	public int deleteCategorie(Categorie cat) {
-		String req3="DELETE FROM Categorie cat";
+		String req3="DELETE FROM Categorie cat WHERE cat.idCategorie=:pId";
 		
 		// CréationduQuery
 		Query query2=em.createQuery(req3);
 	
+		//passage des paramètres
+		query2.setParameter("pId", cat.getIdCategorie());
+		
 		//envoi de la requet
 		return query2.executeUpdate();
 

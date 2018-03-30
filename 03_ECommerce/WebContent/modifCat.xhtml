@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+
+	<title>Page de modification</title>
+
+</h:head>
+
+<h:body>
+
+<h:form>
+
+		<h:panelGrid colums="2">
+		Id:<h:inputText value="#{catMB.categorie.idCategorie}" />
+Nom:<h:inputText value="#{catMB.categorie.nomCategorie}" />
+Description : <h:inputText value="#{catMB.categorie.description}" />
+
+
+			<h:commandButton value="Modifier" action="#{catMB.modifCategorie}" />
+
+			<h:messages style="color:red" />
+
+		</h:panelGrid>
+
+
+
+
+
+	</h:form>
+
+
+
+
+</h:body>
+
+</html>

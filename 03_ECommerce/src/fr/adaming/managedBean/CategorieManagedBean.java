@@ -69,6 +69,10 @@ public class CategorieManagedBean implements Serializable {
 	// méthodes métier
 	public String afficheCategorie() {
 		this.listeCategorie = categorieService.getListCategorie();
+		// récupérer la nouvelle liste
+		List<Categorie> listeCategorie = categorieService.getListCategorie();
+		// mettre a jour la liste dans la session
+		maSession.setAttribute("categorieListe", listeCategorie);
 
 		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("catListeSession",
 				this.listeCategorie);
@@ -106,20 +110,44 @@ public class CategorieManagedBean implements Serializable {
 			// mettre a jour la liste dans la session
 			maSession.setAttribute("categorieListe", listeCategorie);
 
-			return "accueilCat.xhtml";
+			return "ok";
+
 		} else {
-			// le message en cas d'echec
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("modification impossible"));
-			return "modifCat.xhtml";
+
+			return "stop";
 		}
+
 	}
-	
-	// RECHERCHER UNE CATEGORIE 
+
+	// SUPPRIMER UNE CATEGORIE
+	public String supprimCategorie() {
+		int verif = categorieService.deleteCategorie(this.categorie);
+
+		if (verif != 0) {
+			// récupérer la nouvelle liste
+			List<Categorie> listeCategorie = categorieService.getListCategorie();
+			// mettre a jour la liste dans la session
+			maSession.setAttribute("categorieListe", listeCategorie);
+
+			return "accueilAdmin";
+		} else {
+			return "deleteCat";
+		}
+
+	}
+
+	// RECHERCHER UNE CATEGORIE
 	public String chercheCategorie() {
+
+		Categorie catRec = categorieService.searchCategorie(this.categorie);
+
+		if(catRec!=null) {
+			this.categorie=catRec;
+			return "searchCat";
+		}else{
+			return "accueilAdmin";
+		}
 		
-		//Categorie catRec = categorieService.
-		
-		return null;
 	}
 
 }

@@ -20,7 +20,8 @@
     <p:dataTable var="cat" value="#{catMB.listeCategorie}" rows="5"
                          paginator="true"
                          paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                         rowsPerPageTemplate="5,10,15">
+                         rowsPerPageTemplate="5,10,15"
+                         update=@All>
  
         <p:column headerText="Nom Categorie">
             <h:outputText value="#{cat.nomCategorie}" />
