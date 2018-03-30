@@ -42,13 +42,14 @@ public class ProduitDaoImpl implements IProduitDao {
 	public int deleteProduit(Produit produit) {
 		System.out.println("========= PRODUIT DAO IMPL =======");
 		// Création de la requête
-		String req = "DELETE pr FROM Produit as pr WHERE pr.idProduit=:pIdProd";
+		String req = "DELETE Produit as pr WHERE pr.idProduit=:pIdProd";
 
 		// Création du Query
 		Query query = em.createQuery(req);
 
 		// Passage des paramètres
 		query.setParameter("pIdProd", produit.getIdProduit());
+	
 
 
 		// Envoi de la requête et récupération du résultat
@@ -107,21 +108,20 @@ public class ProduitDaoImpl implements IProduitDao {
 	@Override
 	public int updateProduit(Produit produit) {
 		// Création de la requête
-		String req = "UPDATE Produit pr SET pr.idProduit=:pIdProd, pr.designation=:pDesign,"
-				+ " pr.description=:pDescr, pr.prix=:pPrix, pr.quantite=:pQuant,"
-				+ " pr.photo=:pPhoto AND pr.admin.idAdm=:pIdAdm";
+		String req = "UPDATE Produit pr SET pr.idProduit=:pIdProd1, pr.designation=:pDesign, pr.description=:pDescr, pr.prix=:pPrix, pr.quantite=:pQuant,pr.photo=:pPhoto WHERE pr.idProduit=:pIdProd";
 		
 		// Création du Query
 		Query query=em.createQuery(req);
 		
 		// Passage des paramètres 
-		query.setParameter("pIdProd", produit.getIdProduit());
+		query.setParameter("pIdProd1", produit.getIdProduit());
 		query.setParameter("pDesign", produit.getDesignation());
 		query.setParameter("pDescr", produit.getDescription());
 		query.setParameter("pPrix", produit.getPrix());
 		query.setParameter("pQuant", produit.getQuantite());
 		query.setParameter("pPhoto", produit.getPhoto());
-		query.setParameter("pIdAdm", produit.getAdmin().getIdAdm());
+		query.setParameter("pIdProd", produit.getIdProduit());
+	
 		
 		
 		// Envoi de la requête et récupération du résultat 

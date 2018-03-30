@@ -85,36 +85,35 @@ public class ProduitManagedBean implements Serializable {
 		// }
 	}
 
-//	// Développement de la méthode Supprimer un Produit
-//	public String deleteProduit() {
-//		int verif = prodService.deleteProduit(this.produit);
-//
-//		if (verif != 0) {
-//			// Récupérer la nouvelle liste
-//			List<Produit> liste1 = prodService.getAllProduit();
-//			// Mettre à jour la liste dans la session
-//			maSession.setAttribute("produitsListe", liste1);
-//			return "accueil";
-//		} else {
-//			return "accueil";
-//		}
-//
-//	}
-//
-//	// Développement de la méthode Modifier un Produit
-//	public String updateProduit() {
-//		int verif = prodService.updateProduit(this.produit, this.admin);
-//		if (verif != 0) {
-//			// Récupérer la nouvelle liste
-//			List<Produit> liste2 = prodService.getAllProduit();
-//			// Mettre à jour la liste dans la session
-//			maSession.setAttribute("produitsListe", liste2);
-//			return "accueil";
-//		} else {
-//			return "modif";
-//		}
-//		//
-//	}
+	 // Développement de la méthode Supprimer un Produit
+	 public String deleteProduit() {
+	 int verif = prodService.deleteProduit(this.produit);
+	 if (verif != 0) {
+	 // Récupérer la nouvelle liste
+	 List<Produit> liste1 = prodService.getAllProduit();
+	 // Mettre à jour la liste dans la session
+	 maSession.setAttribute("produitsListe", liste1);
+	 return "accueil";
+	 } else {
+	 return "accueil";
+	 }
+	
+	 }
+	
+	 // Développement de la méthode Modifier un Produit
+	 public String updateProduit() {
+	 int verif = prodService.updateProduit(this.produit, this.admin);
+	 if (verif != 0) {
+	 // Récupérer la nouvelle liste
+	 List<Produit> liste2 = prodService.getAllProduit();
+	 // Mettre à jour la liste dans la session
+	 maSession.setAttribute("produitsListe", liste2);
+	 return "accueil";
+	 } else {
+	 return "modif";
+	 }
+	 //
+	 }
 
 	public List<Categorie> getListeCategorie() {
 		return listeCategorie;
