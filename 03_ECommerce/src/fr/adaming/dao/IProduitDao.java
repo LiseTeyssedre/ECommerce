@@ -2,10 +2,13 @@ package fr.adaming.dao;
 
 import java.util.List;
 
-import fr.adaming.model.Administrateur;
+import javax.ejb.Local;
+
+;
 import fr.adaming.model.Client;
 import fr.adaming.model.Produit;
 
+@Local
 public interface IProduitDao {
 	
 	public Produit addProduit(Produit produit); // OK

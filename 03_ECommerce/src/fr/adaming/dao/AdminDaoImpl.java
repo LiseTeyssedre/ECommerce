@@ -1,11 +1,13 @@
 package fr.adaming.dao;
 
+import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import fr.adaming.model.Administrateur;
 
+@Stateful
 public class AdminDaoImpl implements IAdminDao {
 	
 	

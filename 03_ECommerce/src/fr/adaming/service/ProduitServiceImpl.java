@@ -3,6 +3,7 @@ package fr.adaming.service;
 import java.util.List;
 
 import javax.ejb.EJB;
+import javax.ejb.Stateless;
 
 import fr.adaming.dao.IProduitDao;
 import fr.adaming.dao.ProduitDaoImpl;
@@ -10,6 +11,7 @@ import fr.adaming.model.Administrateur;
 import fr.adaming.model.Client;
 import fr.adaming.model.Produit;
 
+@Stateless
 public class ProduitServiceImpl implements IProduitService{
 
 	
