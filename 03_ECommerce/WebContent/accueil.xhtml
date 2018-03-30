@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
 	<title>Page d'acceuil</title>
@@ -14,6 +15,16 @@
 
  je suis dans la page accueil
 
+
+<h:form>
+    <p:growl id="messages" showDetail="true"/>
+ 
+    <p:menuButton value="Visualiser nos Produits">
+        <p:menuitem value="Nos catégories" actionListener="" update="messages" icon="ui-icon-disk"/>
+        <p:menuitem value="Nos produits" actionListener="" update="messages" icon="ui-icon-arrowrefresh-1-w"/>
+      
+    </p:menuButton>
+</h:form>
 
 
 

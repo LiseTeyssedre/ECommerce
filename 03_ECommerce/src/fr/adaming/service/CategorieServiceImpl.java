@@ -7,6 +7,7 @@ import javax.ejb.Stateful;
 
 import fr.adaming.dao.CategorieDaoImpl;
 import fr.adaming.dao.ICategorieDao;
+import fr.adaming.model.Administrateur;
 import fr.adaming.model.Categorie;
 
 
@@ -14,13 +15,40 @@ import fr.adaming.model.Categorie;
 public class CategorieServiceImpl implements ICategorieService {
 
 	//transformation de l'association UML en java
-	@EJB 
+	@EJB
 	private ICategorieDao categorieDao;
 	
+	
 	@Override
-	public List<Categorie> getAllCategorie() {
+	public List<Categorie> getListCategorie() {
 		
-		return categorieDao.getAllCategorie();
+		return categorieDao.getListCategorie();
 	}
+
+	@Override
+	public Categorie addCategorie(Categorie cat) {
+		
+		return null;
+	}
+
+	@Override
+	public Categorie searchCategorie(Categorie cat) {
+		
+		return null;
+	}
+
+	@Override
+	public int updateCategorie(Categorie cat) {
+		
+		return 0;
+	}
+
+	@Override
+	public int deleteCategorie(Categorie cat) {
+		
+		return 0;
+	}
+
+
 
 }
