@@ -2,7 +2,7 @@ package fr.adaming.dao;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceUnit;
+import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import fr.adaming.model.Client;
@@ -11,14 +11,14 @@ import fr.adaming.model.Client;
 public class ClientDaoImpl implements IClientDao {
 
 	//injection de l'EM
-	@PersistenceUnit(unitName="PU")
+	@PersistenceContext(unitName="PU")
 	private EntityManager em;
 	
 	
 	@Override
 	public Client isExist(Client cl) {
 		//La requete JPQL
-		String req="SELECT cl FROM Client as cl WHERE cl.mail=:pMail AND cl.mdp=:pMdp";
+		String req="SELECT cl FROM Client as cl WHERE cl.email=:pMail AND cl.mdp=:pMdp";
 		
 		//Creer un objet de type Query pour envoyer la requete
 		Query query=em.createQuery(req);

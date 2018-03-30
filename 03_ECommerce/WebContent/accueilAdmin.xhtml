@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
 
@@ -13,7 +14,67 @@
 </h:head>
 
 <h:body>
-acceuil admin 
+
+<h:form>  
+    <p:growl id="messages"/>
+ 
+    <p:menubar>
+        <p:submenu label="Categorie" icon="ui-icon-document">
+       
+            <p:menuitem value="Ajouter" url="#" />
+            <p:menuitem value="Supprimer" url="#" />
+             <p:menuitem value="Modifier" url="#" />
+              <p:menuitem value="Rechercher" url="#" />
+        </p:submenu>
+ 
+        <p:submenu label="Produits" icon="ui-icon-document">
+       
+            <p:menuitem value="Ajouter" url="#" />
+            <p:menuitem value="Supprimer" url="#" />
+             <p:menuitem value="Modifier" url="#" />
+              <p:menuitem value="Rechercher" url="#" />
+        </p:submenu>
+    </p:menubar>
+</h:form>
+
+
+<h1>Liste des produits disponibles</h1>
+
+<h1>AFFICHER LE TABLEAU DES PRODUITS</h1>
+
+
+
+<h1>Liste des categories</h1>
+<h:form>
+    <p:dataTable var="cat" value="#{catMB.listeCategorie}" rows="5"
+                         paginator="true"
+                         paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                         rowsPerPageTemplate="5,10,15">
+ 
+        <p:column headerText="Nom Categorie">
+            <h:outputText value="#{cat.nomCategorie}" />
+        </p:column>
+ 
+        <p:column headerText="Description">
+            <h:outputText value="#{cat.description}" />
+        </p:column>
+ 
+        <p:column headerText="Photo">
+            <h:outputText value="#{cat.photo}" />
+        </p:column>
+         
+        <f:facet name="paginatorTopLeft">
+            <p:commandButton type="button" icon="fa fa-sync" />
+        </f:facet>
+ 
+        <f:facet name="paginatorBottomRight">
+            <p:commandButton type="button" icon="fa fa-cloud-upload" />
+        </f:facet>
+    </p:dataTable>
+</h:form>
+
+
+
 </h:body>
 
 </html>
