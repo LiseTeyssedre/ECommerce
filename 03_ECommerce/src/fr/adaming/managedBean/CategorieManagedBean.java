@@ -3,6 +3,7 @@ package fr.adaming.managedBean;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
@@ -30,6 +31,11 @@ public class CategorieManagedBean implements Serializable {
 		this.categorie = new Categorie();
 	}
 
+	@PostConstruct
+	public void init() {
+
+	}
+
 	// getters et setters
 	public Categorie getCategorie() {
 		return categorie;
@@ -50,9 +56,10 @@ public class CategorieManagedBean implements Serializable {
 	// méthodes métier
 	public String afficheCategorie() {
 		this.listeCategorie = categorieService.getListCategorie();
-
+		for (Categorie c : listeCategorie) {
+			System.out.println(c);
+		}
 		return "categorie.xhtml";
-
 	}
 
 	public String ajouteCategorie() {
