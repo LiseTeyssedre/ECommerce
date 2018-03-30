@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
 
@@ -19,8 +20,8 @@
 		<h:panelGrid colums="2">
 Nom:<h:inputText value="#{catMB.categorie.nomCategorie}" />
 Description : <h:inputText value="#{catMB.categorie.description}" />
-<!--  Photo :<h:inputText value="#{catMB.categorie.photo}" /> -->
-
+<!--  Photo :<h:inputText value="#{catMB.categorie.photo}" /> 
+ <p:fileUpload value="#{catMB.nomUploadedFile}">  -->
 			<h:commandButton value="Ajouter" action="#{catMB.ajouteCategorie}" />
 
 			<h:messages style="color:red" />

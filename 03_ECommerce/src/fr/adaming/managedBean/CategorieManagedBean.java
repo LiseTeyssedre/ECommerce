@@ -33,10 +33,12 @@ public class CategorieManagedBean implements Serializable {
 	private List<Categorie> listeCategorie;
 	HttpSession maSession;
 	private Administrateur admin;
+	private UploadedFile uf;
 
 	// constructeur
 	public CategorieManagedBean() {
 		this.categorie = new Categorie();
+		this.uf=new UploadedFileWrapper();
 	}
 
 	@PostConstruct
