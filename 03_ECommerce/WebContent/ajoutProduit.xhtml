@@ -20,10 +20,11 @@
 		<h:panelGrid columns="2">
 Designation : <h:inputText value="#{prMB.produit.designation}"/>
 Description : <h:inputText value="#{prMB.produit.description}" />
-<p:outputLabel value="Catégorie :" for="idCategorie" />
-			<p:autoComplete id="idCategorie" dropdown="true" value="#{catMB.listeCategorie}" completeMethod="#{catMB.afficherCategorie}" />
-				
-				
+Catégorie : 
+<h:selectOneMenu value="#{prMB.produit.categorie}">
+	<f:selectItem value="#{catMB.listeCategorie}" var="c" itemLabel="#{prMB.produit.categorie.nomCategorie}" itemValue="#{c}"/>
+</h:selectOneMenu>
+
 Prix : <h:inputText value="#{prMB.produit.prix}" />
 
 Quantité en stock : <h:inputText value="#{prMB.produit.quantite}" />

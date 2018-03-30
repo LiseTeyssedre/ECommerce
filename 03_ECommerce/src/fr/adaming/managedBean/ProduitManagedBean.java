@@ -11,6 +11,7 @@ import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
 import fr.adaming.model.Administrateur;
+import fr.adaming.model.Categorie;
 import fr.adaming.model.Client;
 import fr.adaming.model.Produit;
 import fr.adaming.service.ICategorieService;
@@ -31,7 +32,7 @@ public class ProduitManagedBean implements Serializable {
 	private Produit produit;
 	private Administrateur admin;
 	HttpSession maSession;
-
+	private List<Categorie> listeCategorie;
 	public ProduitManagedBean() {
 		super();
 	}
@@ -108,6 +109,14 @@ public class ProduitManagedBean implements Serializable {
 			return "modif";
 		}
 		//
+	}
+
+	public List<Categorie> getListeCategorie() {
+		return listeCategorie;
+	}
+
+	public void setListeCategorie(List<Categorie> listeCategorie) {
+		this.listeCategorie = listeCategorie;
 	}
 
 }

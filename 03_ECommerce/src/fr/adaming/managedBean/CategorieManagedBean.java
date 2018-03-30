@@ -1,9 +1,9 @@
 package fr.adaming.managedBean;
 
 import java.io.Serializable;
-
+import java.util.HashMap;
 import java.util.List;
-
+import java.util.Map;
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -38,7 +38,7 @@ public class CategorieManagedBean implements Serializable {
 
 	@PostConstruct
 	public void init() {
-
+	
 	}
 
 	// getters et setters
