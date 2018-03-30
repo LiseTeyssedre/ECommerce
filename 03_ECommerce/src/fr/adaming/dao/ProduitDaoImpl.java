@@ -40,15 +40,16 @@ public class ProduitDaoImpl implements IProduitDao {
 	// Redéfinition de la méthode deleteProduit
 	@Override
 	public int deleteProduit(Produit produit) {
+		System.out.println("========= PRODUIT DAO IMPL =======");
 		// Création de la requête
-		String req = "DELETE pr FROM Produit as pr WHERE pr.idProduit=:pIdProd AND pr.admin.idAdm=:pIdAdm";
+		String req = "DELETE pr FROM Produit as pr WHERE pr.idProduit=:pIdProd";
 
 		// Création du Query
 		Query query = em.createQuery(req);
 
 		// Passage des paramètres
 		query.setParameter("pIdProd", produit.getIdProduit());
-		query.setParameter("pIdAdm", produit.getAdmin().getIdAdm());
+
 
 		// Envoi de la requête et récupération du résultat
 		int verif = query.executeUpdate();
@@ -106,7 +107,7 @@ public class ProduitDaoImpl implements IProduitDao {
 	@Override
 	public int updateProduit(Produit produit) {
 		// Création de la requête
-		String req = "UPDATE Produit pr WHERE pr.idProduit=:pIdProd, pr.designation=:pDesign,"
+		String req = "UPDATE Produit pr SET pr.idProduit=:pIdProd, pr.designation=:pDesign,"
 				+ " pr.description=:pDescr, pr.prix=:pPrix, pr.quantite=:pQuant,"
 				+ " pr.photo=:pPhoto AND pr.admin.idAdm=:pIdAdm";
 		

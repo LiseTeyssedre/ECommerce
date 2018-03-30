@@ -68,7 +68,7 @@ public class Produit {
 	}
 
 	// déclaration des getters et setters
-	public long getIdProduit() {
+	public Long getIdProduit() {
 		return idProduit;
 	}
 

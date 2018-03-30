@@ -5,9 +5,10 @@ import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateful;
 
-
+import fr.adaming.dao.ICategorieDao;
 import fr.adaming.dao.IProduitDao;
 import fr.adaming.model.Administrateur;
+import fr.adaming.model.Categorie;
 import fr.adaming.model.Client;
 import fr.adaming.model.Produit;
 
@@ -19,9 +20,13 @@ public class ProduitServiceImpl implements IProduitService{
 	@EJB // Injecter le produit Dao
 	private IProduitDao prodDao;
 	
+	@EJB
+	ICategorieDao catDao;
+	
 	
 	@Override
 	public List<Produit> getAllProduit() {
+		
 		return prodDao.getAllProduit();
 	}
 	
@@ -32,8 +37,8 @@ public class ProduitServiceImpl implements IProduitService{
 	//==============================================================================
 	
 	@Override
-	public int deleteProduit(Produit produit, Administrateur a) {
-		produit.setAdmin(a);
+	public int deleteProduit(Produit produit) {
+
 		return prodDao.updateProduit(produit);
 	}
 	//==============================================================================
@@ -72,7 +77,11 @@ public class ProduitServiceImpl implements IProduitService{
 	@Override
 	public Produit addProduit(Produit produit, Administrateur a) {
 		System.out.println("--------------------- service");
+		// recuperer la cat de la bd 
+		Categorie caOut=catDao.searchCategorie(produit.getCategorie());
+		
 		produit.setAdmin(a);
+		produit.setCategorie(caOut);
 		return prodDao.addProduit(produit);
 	}
 	//==============================================================================

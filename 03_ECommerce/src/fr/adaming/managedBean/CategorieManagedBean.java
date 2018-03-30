@@ -117,7 +117,7 @@ public class CategorieManagedBean implements Serializable {
 	// RECHERCHER UNE CATEGORIE 
 	public String chercheCategorie() {
 		
-		Categorie catRec = categorieService.
+		//Categorie catRec = categorieService.
 		
 		return null;
 	}

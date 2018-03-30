@@ -21,8 +21,8 @@
 			Designation : <h:inputText value="#{prMB.produit.designation}"/>
 			Description : <h:inputText value="#{prMB.produit.description}" />
 			Catégorie : 
-						<h:selectOneMenu  value="#{prMB.produit.categorie}">
-								<f:selectItems value="#{sessionScope.catListeSession}" var="c" itemLabel="#{c.nomCategorie}" itemValue="#{c}"/>
+						<h:selectOneMenu  value="#{prMB.produit.categorie.idCategorie}">
+								<f:selectItems value="#{sessionScope.catListeSession}" var="c" itemLabel="#{c.nomCategorie}" itemValue="#{c.idCategorie}"/>
 						</h:selectOneMenu>
 
 			Prix : <h:inputText value="#{prMB.produit.prix}" />

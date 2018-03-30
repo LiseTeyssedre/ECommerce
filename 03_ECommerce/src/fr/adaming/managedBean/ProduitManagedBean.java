@@ -33,8 +33,9 @@ public class ProduitManagedBean implements Serializable {
 	private Administrateur admin;
 	HttpSession maSession;
 	private List<Categorie> listeCategorie;
+
 	public ProduitManagedBean() {
-		this.produit=new Produit();
+		this.produit = new Produit();
 		this.produit.setCategorie(new Categorie());
 	}
 
@@ -42,7 +43,7 @@ public class ProduitManagedBean implements Serializable {
 	@PostConstruct // Pour que la méthode s'exécute juste après l'instanciation
 					// du managed bean
 	public void init() {
-		this.listeCategorie=catService.getListCategorie();
+		this.listeCategorie = catService.getListCategorie();
 		// Récupérer la session
 		this.maSession = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
 		// Récupérer l'admin stocké dans la session
@@ -68,56 +69,52 @@ public class ProduitManagedBean implements Serializable {
 		this.admin = admin;
 	}
 
-	
-
-	
-	
 	// Développement de la méthode Ajouter un Produit
 	public String ajouterProduit() {
-		System.out.println("--------------------- mb");
+		//System.out.println("--------------------- id de la cat " + this.produit.getCategorie().getIdCategorie());
 		Produit prodAjout = prodService.addProduit(this.produit, this.admin);
 		return "accueil";
-//		if (prodAjout.getIdProduit() != 0) {
-//			// Récupérer la nouvelle liste de produits
-//			List<Produit> liste = prodService.getAllProduit();
+		// if (prodAjout.getIdProduit() != 0) {
+		// // Récupérer la nouvelle liste de produits
+		// List<Produit> liste = prodService.getAllProduit();
+		// // Mettre à jour la liste dans la session
+		// maSession.setAttribute("produitsListe", liste);
+		// return "accueil";
+		// } else {
+		// return "accueil";
+		// }
+	}
+
+//	// Développement de la méthode Supprimer un Produit
+//	public String deleteProduit() {
+//		int verif = prodService.deleteProduit(this.produit);
+//
+//		if (verif != 0) {
+//			// Récupérer la nouvelle liste
+//			List<Produit> liste1 = prodService.getAllProduit();
 //			// Mettre à jour la liste dans la session
-//			maSession.setAttribute("produitsListe", liste);
+//			maSession.setAttribute("produitsListe", liste1);
 //			return "accueil";
 //		} else {
 //			return "accueil";
 //		}
-	}
-
-	// Développement de la méthode Supprimer un Produit
-	public String deleteProduit() {
-		int verif = prodService.deleteProduit(this.produit, this.admin);
-
-		if (verif != 0) {
-			// Récupérer la nouvelle liste
-			List<Produit> liste1 = prodService.getAllProduit();
-			// Mettre à jour la liste dans la session
-			maSession.setAttribute("produitsListe", liste1);
-			return "accueil";
-		} else {
-			return "accueil";
-		}
-
-	}
-
-	// Développement de la méthode Modifier un Produit
-	public String updateProduit() {
-		int verif = prodService.updateProduit(this.produit, this.admin);
-		if (verif != 0) {
-			// Récupérer la nouvelle liste
-			List<Produit> liste2 = prodService.getAllProduit();
-			// Mettre à jour la liste dans la session
-			maSession.setAttribute("produitsListe", liste2);
-			return "accueil";
-		} else {
-			return "modif";
-		}
-		//
-	}
+//
+//	}
+//
+//	// Développement de la méthode Modifier un Produit
+//	public String updateProduit() {
+//		int verif = prodService.updateProduit(this.produit, this.admin);
+//		if (verif != 0) {
+//			// Récupérer la nouvelle liste
+//			List<Produit> liste2 = prodService.getAllProduit();
+//			// Mettre à jour la liste dans la session
+//			maSession.setAttribute("produitsListe", liste2);
+//			return "accueil";
+//		} else {
+//			return "modif";
+//		}
+//		//
+//	}
 
 	public List<Categorie> getListeCategorie() {
 		return listeCategorie;

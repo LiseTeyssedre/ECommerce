@@ -53,7 +53,7 @@ public class Categorie {
 	}
 	
 	//déclaration des getters et setters
-	public long getIdCategorie() {
+	public Long getIdCategorie() {
 		return idCategorie;
 	}
 	public void setIdCategorie(Long idCategorie) {
