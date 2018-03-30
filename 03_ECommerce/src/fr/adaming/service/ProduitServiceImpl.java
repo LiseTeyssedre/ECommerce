@@ -39,7 +39,7 @@ public class ProduitServiceImpl implements IProduitService{
 	@Override
 	public int deleteProduit(Produit produit) {
 
-		return prodDao.updateProduit(produit);
+		return prodDao.deleteProduit(produit);
 	}
 	//==============================================================================
 	//==============================================================================
@@ -92,6 +92,7 @@ public class ProduitServiceImpl implements IProduitService{
 
 	@Override
 	public int updateProduit(Produit produit, Administrateur a) {
+		//
 		produit.setAdmin(a);
 		return prodDao.updateProduit(produit);
 	}

@@ -55,7 +55,7 @@ public class Produit {
 		this.photo = photo;
 	}
 
-	public Produit(long idProduit, String designation, String description, double prix, int quantite,
+	public Produit(Long idProduit, String designation, String description, double prix, int quantite,
 			boolean selectionne, byte[] photo) {
 		super();
 		this.idProduit = idProduit;
@@ -72,7 +72,7 @@ public class Produit {
 		return idProduit;
 	}
 
-	public void setIdProduit(long idProduit) {
+	public void setIdProduit(Long idProduit) {
 		this.idProduit = idProduit;
 	}
 
@@ -148,8 +148,5 @@ public class Produit {
 		this.listeLigneCommande = listeLigneCommande;
 	}
 
-	public void setIdProduit(Long idProduit) {
-		this.idProduit = idProduit;
-	}
 
 }
