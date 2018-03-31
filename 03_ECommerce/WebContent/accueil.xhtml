@@ -17,21 +17,65 @@
 
 
 <h:form>
-    <p:menuButton value="Espace Connexion">
-        <p:menuitem value="Espace Admin"  url="loginAdmin.xhtml"/>
-         <p:menuitem value="Espace Client" url="loginClient.xhtml"/>
-    </p:menuButton>
-</h:form>
+		<p:menuButton value="Espace Connexion">
+			<p:menuitem value="Espace Admin" url="loginAdmin.xhtml" />
+			<p:menuitem value="Espace Client" url="loginClient.xhtml" />
+		</p:menuButton>
+	</h:form>
 
 
 
-<h:form>
-    <p:menuButton value="Nos propositions">
-        <p:menuitem value="Nos catégories"  action="#{catMB.afficheCategorie}"/>
-         <p:menuitem value="Nos produits" url="produit.xhtml"/>
+	<h:form>
+		<p:menuButton value="Nos propositions">
+			<p:menuitem value="Nos catégories" action="#{catMB.afficheCategorie}" />
+			<p:menuitem value="Nos produits" action="#{prMB.getAllProduit}"
+				url="produit.xhtml" />
 
-    </p:menuButton>
-</h:form>
+		</p:menuButton>
+
+
+
+		<p:dataTable var="prod" value="#{prMB.listeProduit}" rows="5"
+			paginator="true"
+			paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+			rowsPerPageTemplate="5,10,15" update="@all">
+
+			<p:column headerText="Nom du Produit">
+				<h:outputText value="#{prod.designation}" />
+			</p:column>
+
+			<p:column headerText="Description">
+				<h:outputText value="#{prod.description}" />
+			</p:column>
+
+			<p:column headerText="Prix unitaire">
+				<h:outputText value="#{prod.prix}" />
+			</p:column>
+
+			<p:column headerText="Quantité en stock">
+				<h:outputText value="#{prod.quantite}" />
+			</p:column>
+
+			<h:panelGrid>
+				<h:outputLabel for="selection" value="Selection :" />
+				<p:selectBooleanCheckbox id="checked" value="#{prMB.selectionne}" />
+				<p:commandButton value="Ajouter au panier" />
+			</h:panelGrid>
+
+
+			<f:facet name="paginatorTopLeft">
+				<p:commandButton type="button" icon="fa fa-sync" />
+			</f:facet>
+
+			<f:facet name="paginatorBottomRight">
+				<p:commandButton type="button" icon="fa fa-cloud-upload" />
+			</f:facet>
+		</p:dataTable>
+	</h:form>
+
+
+
+
 
 
 </h:body>

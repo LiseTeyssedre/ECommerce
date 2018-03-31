@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "produits")
@@ -26,6 +27,7 @@ public class Produit {
 	private String description;
 	private double prix;
 	private int quantite;
+	@Transient
 	private boolean selectionne=false;
 	private byte[] photo;
 

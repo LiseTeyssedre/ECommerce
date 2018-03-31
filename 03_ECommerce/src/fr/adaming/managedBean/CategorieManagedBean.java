@@ -1,9 +1,8 @@
 package fr.adaming.managedBean;
 
 import java.io.Serializable;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
 
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -17,7 +16,6 @@ import org.jboss.resteasy.plugins.delegates.NewCookieHeaderDelegate;
 
 import fr.adaming.model.Administrateur;
 import fr.adaming.model.Categorie;
-import fr.adaming.model.Client;
 import fr.adaming.service.ICategorieService;
 
 @ManagedBean(name = "catMB")

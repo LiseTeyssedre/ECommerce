@@ -9,10 +9,10 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
+import javax.validation.constraints.AssertTrue;
 
 import fr.adaming.model.Administrateur;
 import fr.adaming.model.Categorie;
-import fr.adaming.model.Client;
 import fr.adaming.model.Produit;
 import fr.adaming.service.ICategorieService;
 import fr.adaming.service.IProduitService;
@@ -32,7 +32,10 @@ public class ProduitManagedBean implements Serializable {
 	private Produit produit;
 	private Administrateur admin;
 	HttpSession maSession;
+	@AssertTrue
+	private boolean selectionne;
 	private List<Categorie> listeCategorie;
+	private List<Produit> listeProduit;
 
 	public ProduitManagedBean() {
 		this.produit = new Produit();
@@ -44,10 +47,13 @@ public class ProduitManagedBean implements Serializable {
 					// du managed bean
 	public void init() {
 		this.listeCategorie = catService.getListCategorie();
+		this.setListeProduit(prodService.getAllProduit());
 		// Récupérer la session
 		this.maSession = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
 		// Récupérer l'admin stocké dans la session
 		this.admin = (Administrateur) this.maSession.getAttribute("adminSession");
+		
+		
 
 	}
 
@@ -67,6 +73,16 @@ public class ProduitManagedBean implements Serializable {
 
 	public void setAdmin(Administrateur admin) {
 		this.admin = admin;
+	}
+	
+	
+
+	public boolean isSelectionne() {
+		return selectionne;
+	}
+
+	public void setSelectionne(boolean selectionne) {
+		this.selectionne = selectionne;
 	}
 
 	// Développement de la méthode Ajouter un Produit
@@ -114,6 +130,17 @@ public class ProduitManagedBean implements Serializable {
 	 }
 	 //
 	 }
+	 
+	 
+	 // Développement de la méthode GetListeProduit
+	 public String getAllProduit(){
+		 List<Produit> listeProduits=prodService.getAllProduit();
+		 //Mettre à jour la liste dans la session
+		 maSession.setAttribute("Listeproduits", listeProduits);
+		 System.out.println("======================================");
+		 return "accueil";
+	 }
+	 
 
 	public List<Categorie> getListeCategorie() {
 		return listeCategorie;
@@ -121,6 +148,14 @@ public class ProduitManagedBean implements Serializable {
 
 	public void setListeCategorie(List<Categorie> listeCategorie) {
 		this.listeCategorie = listeCategorie;
+	}
+
+	public List<Produit> getListeProduit() {
+		return listeProduit;
+	}
+
+	public void setListeProduit(List<Produit> listeProduit) {
+		this.listeProduit = listeProduit;
 	}
 
 }
