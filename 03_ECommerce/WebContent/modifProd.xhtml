@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>PAGE MODIFICATION DU PRODUIT</title>
+</h:head>
+
+<h:body>
+
+	<h:panelGrid columns="2">
+			Id du produit à modifier : <h:inputText value="#{prMB.produit.idProduit}"/>
+			Designation : <h:inputText value="#{prMB.produit.designation}" />
+			Description : <h:inputText value="#{prMB.produit.description}" />
+			Catégorie : 
+		<h:selectOneMenu value="#{prMB.produit.categorie.idCategorie}">
+			<f:selectItems value="#{sessionScope.catListeSession}" var="c"
+				itemLabel="#{c.nomCategorie}" itemValue="#{c.idCategorie}" />
+		</h:selectOneMenu>
+		
+			Prix : <h:inputText value="#{prMB.produit.prix}" />
+			Quantité en stock : <h:inputText value="#{prMB.produit.quantite}" />
+
+		<h:commandButton value="Modifier le produit" action="#{prMB.updateProduit}"></h:commandButton>
+	</h:panelGrid>
+
+
+</h:body>
+</html>
