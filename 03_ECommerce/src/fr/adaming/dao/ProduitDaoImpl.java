@@ -7,7 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-
+import fr.adaming.model.Categorie;
 import fr.adaming.model.Client;
 import fr.adaming.model.Produit;
 
@@ -127,6 +127,23 @@ public class ProduitDaoImpl implements IProduitDao {
 		// Envoi de la requête et récupération du résultat 
 		return query.executeUpdate();
 
+	}
+
+	// ==============================================================================
+		// ==============================================================================
+		// ==============================================================================
+
+	// Redéfinition de la méthode getProduitById
+	@Override
+	public List<Produit> getProduitByIdCategorie(Categorie cat) {
+		//Création de la requête 
+		String req="SELECT * FROM Produit as pr WHERE pr.categorie.idCategorie=:pIdCat";
+		//Création du query
+		Query query=em.createQuery(req);
+		//Passage des paramètres 
+		query.setParameter("pIdCat", cat.getIdCategorie());		
+		// Envoi de la requête et récupération du résultat
+		return query.getResultList();
 	}
 
 	// ==============================================================================

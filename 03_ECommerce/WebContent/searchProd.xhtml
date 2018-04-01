@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>RECHERCHER UN PRODUIT</title>
+</h:head>
+
+<h:body>
+
+	<h:form>
+		<h:panelGrid columns="2">
+Id du Produit Recherché : <h:inputText value="#{prMB.produit.idProduit}" />
+			<p:commandButton value="Rechercher" action="#{prMB.getProduitById}" update="@all"/>
+		</h:panelGrid>
+
+	</h:form>
+
+	<p:dataTable var="prod" value="#{prMB.produit}" rendered="#{cMB.indice}">
+		<p:column headerText="nom du Produit">
+			<h:outputText value="#{prod.nomProduit}" />
+		</p:column>
+
+		<p:column headerText="">
+			<h:outputText value="#{cl.nom}" />
+		</p:column>
+
+		<p:column headerText="Prenom">
+			<h:outputText value="#{cl.prenom}" />
+		</p:column>
+
+		<p:column headerText="Date de naissance">
+			<h:outputText value="#{cl.dn}" />
+		</p:column>
+	</p:dataTable>
+
+
+
+
+	</h:form>
+</h:panelGrid>
+
+</h:body>
+</html>

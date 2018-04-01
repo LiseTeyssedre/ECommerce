@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>RECHERCHER LES PRODUITS PAR CATEGORIE</title>
+</h:head>
+
+<h:body>
+
+Je suis dans la page rechercher les produits par catégorie 
+	<h:form>
+		<h:panelGrid columns="2">
+Id de la catégorie recherchée : <h:inputText value="#{prMB.produit.categorie.idCategorie}" />
+			<p:commandButton value="Rechercher" action="#{prMB.getProduitById}" update="@all"/>
+		</h:panelGrid>
+
+	</h:form>
+
+
+</h:body>
+</html>

@@ -5,6 +5,7 @@ import java.util.List;
 import javax.ejb.Local;
 
 import fr.adaming.model.Administrateur;
+import fr.adaming.model.Categorie;
 import fr.adaming.model.Client;
 import fr.adaming.model.Produit;
 
@@ -12,6 +13,7 @@ import fr.adaming.model.Produit;
 public interface IProduitService {
 	
 	public int updateProduit(Produit produit, Administrateur a);
+	public List<Produit> getProduitByIdCat(Categorie cat);
 	public Produit addProduit(Produit produit);
 	public List<Produit> getAllProduit();
 	public int deleteProduit(Produit produit);

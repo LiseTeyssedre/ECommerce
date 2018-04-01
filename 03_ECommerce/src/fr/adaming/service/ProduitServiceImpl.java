@@ -74,14 +74,14 @@ public class ProduitServiceImpl implements IProduitService{
 	//==============================================================================
 	
 
-	@Override
-	public Produit addProduit(Produit produit) {
-		System.out.println("--------------------- service");
-		// recuperer la cat de la bd 
-		Categorie caOut=catDao.searchCategorie(produit.getCategorie());
-		produit.setCategorie(caOut);
-		return prodDao.addProduit(produit);
-	}
+//	@Override
+//	public Produit addProduit(Produit produit) {
+//		System.out.println("--------------------- service");
+//		// recuperer la cat de la bd 
+//		Categorie caOut=catDao.searchCategorie(produit.getCategorie());
+//		produit.setCategorie(caOut);
+//		return prodDao.addProduit(produit);
+//	}
 	//==============================================================================
 	//==============================================================================
 	//==============================================================================
@@ -93,6 +93,14 @@ public class ProduitServiceImpl implements IProduitService{
 		//
 		produit.setAdmin(a);
 		return prodDao.updateProduit(produit);
+	}
+
+
+	
+	@Override
+	public List<Produit> getProduitByIdCat(Categorie cat) {
+		return prodDao.getProduitByIdCategorie(cat);
+		
 	}
 
 }
