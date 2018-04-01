@@ -86,7 +86,7 @@ public class CategorieManagedBean implements Serializable {
 
 		FacesContext.getCurrentInstance().getExternalContext().getSessionMap().put("catListeSession",
 				this.listeCategorie);
-		return "categorie.xhtml";
+		return "categorie";
 	}
 
 	// AJOUTER UNE CATEGORIE
