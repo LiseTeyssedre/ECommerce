@@ -50,6 +50,12 @@ public class CategorieServiceImpl implements ICategorieService {
 		return categorieDao.deleteCategorie(cat);
 	}
 
+	@Override
+	public List<Categorie> rechercheMotClef(Categorie cat) {
+		
+		return categorieDao.rechercheMotClef(cat);
+	}
+
 
 
 }

@@ -20,4 +20,6 @@ public interface ICategorieDao {
 	public int updateCategorie (Categorie cat);
 	
 	public int deleteCategorie (Categorie cat);
+	
+	public List<Categorie> rechercheMotClef (Categorie cat);
 }

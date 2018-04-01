@@ -20,17 +20,12 @@
 		<h:panelGrid colums="2">
 Nom:<h:inputText value="#{catMB.categorie.nomCategorie}" />
 Description : <h:inputText value="#{catMB.categorie.description}" />
-<!--  Photo :<h:inputText value="#{catMB.categorie.photo}" /> 
- <p:fileUpload value="#{catMB.nomUploadedFile}">  -->
+Photo : <p:fileUpload value="#{catMB.uf}"></p:fileUpload>
 			<h:commandButton value="Ajouter" action="#{catMB.ajouteCategorie}" />
 
 			<h:messages style="color:red" />
 
 		</h:panelGrid>
-
-
-
-
 
 	</h:form>
 

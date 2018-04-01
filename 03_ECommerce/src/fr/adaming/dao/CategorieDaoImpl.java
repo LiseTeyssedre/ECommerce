@@ -7,6 +7,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import org.apache.commons.codec.binary.Base64;
+
 import fr.adaming.model.Administrateur;
 import fr.adaming.model.Categorie;
 import fr.adaming.model.Client;
@@ -75,6 +77,21 @@ public class CategorieDaoImpl implements ICategorieDao {
 		//envoi de la requet
 		return query2.executeUpdate();
 
+	}
+
+	
+	@Override
+	public List<Categorie> rechercheMotClef(Categorie cat) {
+		String req4="SELECT SUBSTRING(description,7,50) FROM Categorie as cat WHERE cat.description=:pDescription";
+		
+		//creation du query
+		Query query3=em.createQuery(req4);
+		
+		//passage des paramètres 
+		query3.setParameter("pDescription", cat.getDescription());
+		
+		//envoi de la requete
+		return query3.getResultList();
 	}
 
 }

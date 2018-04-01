@@ -13,6 +13,8 @@ import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
 import org.jboss.resteasy.plugins.delegates.NewCookieHeaderDelegate;
+import org.primefaces.model.UploadedFile;
+import org.primefaces.model.UploadedFileWrapper;
 
 import fr.adaming.model.Administrateur;
 import fr.adaming.model.Categorie;
@@ -31,10 +33,13 @@ public class CategorieManagedBean implements Serializable {
 	private List<Categorie> listeCategorie;
 	HttpSession maSession;
 	private Administrateur admin;
+	private UploadedFile uf;
+	
 	
 	// constructeur
 	public CategorieManagedBean() {
 		this.categorie = new Categorie();
+		this.uf=new UploadedFileWrapper();
 	}
 
 	@PostConstruct
@@ -63,8 +68,20 @@ public class CategorieManagedBean implements Serializable {
 	public void setListeCategorie(List<Categorie> listeCategorie) {
 		this.listeCategorie = listeCategorie;
 	}
+	public UploadedFile getUf() {
+		return uf;
+	}
+
+	public void setUf(UploadedFile uf) {
+		this.uf = uf;
+	}
+	
 
 	// méthodes métier
+	
+
+
+	//AFFICHER LISTE CATEGORIE
 	public String afficheCategorie() {
 		this.listeCategorie = categorieService.getListCategorie();
 		// récupérer la nouvelle liste
@@ -88,12 +105,12 @@ public class CategorieManagedBean implements Serializable {
 			// mettre a jour la liste dans la session
 			maSession.setAttribute("categorieListe", listeCategorie);
 
-			return "accueilCat.xhtml";
+			return "categorie";
 		} else {
 
 			// le message en cas d'echec
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("ajout impossible"));
-			return "ajoutCat.xhtml";
+			return "categorie";
 		}
 
 	}
@@ -145,7 +162,22 @@ public class CategorieManagedBean implements Serializable {
 		}else{
 			return "accueilAdmin";
 		}
-		
-	}
 
+	}
+	
+	// RECHERCHER PAR MOTS CLEF
+	public String chercheMotClef(){
+		
+		List<Categorie> listeRech = categorieService.rechercheMotClef(this.categorie);	
+		
+		return "motClef";
+	}
+	
+	//AJOUTER UNE PHOTO
+	public String addPhoto(){
+		 
+	this.categorie.setPhoto(this.uf.getContents());
+				return "categorie" ;
+	}
+	
 }

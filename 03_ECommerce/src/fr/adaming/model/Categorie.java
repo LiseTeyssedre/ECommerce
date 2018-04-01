@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 @Entity
 @Table(name="categories")
 public class Categorie {
@@ -25,6 +26,8 @@ public class Categorie {
 	private String nomCategorie;
 	private byte[] photo;
 	private String description;
+	@Transient
+	private String image;
 	
 	//transformation de l'association UML en java
 	@OneToMany(mappedBy="categorie", cascade=CascadeType.REMOVE, fetch=FetchType.EAGER)
@@ -89,6 +92,13 @@ public class Categorie {
 	}
 	public void setAdmin(Administrateur admin) {
 		this.admin = admin;
+	}
+	
+	public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
 	}
 	@Override
 	public String toString() {
