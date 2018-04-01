@@ -22,4 +22,6 @@ public interface ICategorieDao {
 	public int deleteCategorie (Categorie cat);
 	
 	public List<Categorie> rechercheMotClef (Categorie cat);
+	
+	public int recupImage(Categorie cat);
 }

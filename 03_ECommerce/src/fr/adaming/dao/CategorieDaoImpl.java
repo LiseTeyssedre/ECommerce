@@ -94,4 +94,12 @@ public class CategorieDaoImpl implements ICategorieDao {
 		return query3.getResultList();
 	}
 
+	@Override
+	public int recupImage(Categorie cat) {
+		
+		cat.setImage("data:image/png;base64,"+Base64.encodeBase64String(cat.getPhoto()));
+		
+		return 0;
+	}
+
 }

@@ -3,7 +3,6 @@ package fr.adaming.managedBean;
 import java.io.Serializable;
 import java.util.List;
 
-
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.application.FacesMessage;
@@ -12,7 +11,6 @@ import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
-import org.jboss.resteasy.plugins.delegates.NewCookieHeaderDelegate;
 import org.primefaces.model.UploadedFile;
 import org.primefaces.model.UploadedFileWrapper;
 
@@ -34,12 +32,11 @@ public class CategorieManagedBean implements Serializable {
 	HttpSession maSession;
 	private Administrateur admin;
 	private UploadedFile uf;
-	
-	
+
 	// constructeur
 	public CategorieManagedBean() {
 		this.categorie = new Categorie();
-		this.uf=new UploadedFileWrapper();
+		this.uf = new UploadedFileWrapper();
 	}
 
 	@PostConstruct
@@ -68,6 +65,7 @@ public class CategorieManagedBean implements Serializable {
 	public void setListeCategorie(List<Categorie> listeCategorie) {
 		this.listeCategorie = listeCategorie;
 	}
+
 	public UploadedFile getUf() {
 		return uf;
 	}
@@ -75,13 +73,10 @@ public class CategorieManagedBean implements Serializable {
 	public void setUf(UploadedFile uf) {
 		this.uf = uf;
 	}
-	
 
 	// méthodes métier
-	
 
-
-	//AFFICHER LISTE CATEGORIE
+	// AFFICHER LISTE CATEGORIE
 	public String afficheCategorie() {
 		this.listeCategorie = categorieService.getListCategorie();
 		// récupérer la nouvelle liste
@@ -156,28 +151,29 @@ public class CategorieManagedBean implements Serializable {
 
 		Categorie catRec = categorieService.searchCategorie(this.categorie);
 
-		if(catRec!=null) {
-			this.categorie=catRec;
+		if (catRec != null) {
+			this.categorie = catRec;
 			return "searchCat";
-		}else{
+		} else {
 			return "accueilAdmin";
 		}
 
 	}
-	
+
 	// RECHERCHER PAR MOTS CLEF
-	public String chercheMotClef(){
-		
-		List<Categorie> listeRech = categorieService.rechercheMotClef(this.categorie);	
-		
+	public String chercheMotClef() {
+
+		List<Categorie> listeRech = categorieService.rechercheMotClef(this.categorie);
+
 		return "motClef";
 	}
-	
-	//AJOUTER UNE PHOTO
-	public String addPhoto(){
-		 
-	this.categorie.setPhoto(this.uf.getContents());
-				return "categorie" ;
+
+	// AJOUTER UNE PHOTO
+	public void addPhoto() {
+
+		this.categorie.setPhoto(this.uf.getContents());
+
+		return;
 	}
-	
+
 }
