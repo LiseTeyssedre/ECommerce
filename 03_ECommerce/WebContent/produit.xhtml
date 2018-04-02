@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
 
@@ -13,7 +14,52 @@
 </h:head>
 
 <h:body>
-je suis dans la page produit
+
+<h:form>
+<p:dataTable var="prod" value="#{prMB.listeProduit}" rows="5"
+		paginator="true"
+		paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+		rowsPerPageTemplate="5,10,15" update="@all">
+
+		<p:column headerText="Nom du Produit">
+			<h:outputText value="#{prod.designation}" />
+		</p:column>
+
+		<p:column headerText="Description">
+			<h:outputText value="#{prod.description}" />
+		</p:column>
+
+		<p:column headerText="Prix unitaire">
+			<h:outputText value="#{prod.prix}" />
+		</p:column>
+
+		<p:column headerText="Quantité en stock">
+			<h:outputText value="#{prod.quantite}" />
+		</p:column>
+
+		<h:panelGrid>
+			<h:outputLabel for="selection" value="Selection :" />
+			<p:selectBooleanCheckbox id="checked" value="#{prMB.selectionne}" />
+			<p:commandButton value="Ajouter au panier" />
+		</h:panelGrid>
+
+
+		<f:facet name="paginatorTopLeft">
+			<p:commandButton type="button" icon="fa fa-sync" />
+		</f:facet>
+
+		<f:facet name="paginatorBottomRight">
+			<p:commandButton type="button" icon="fa fa-cloud-upload" />
+		</f:facet>
+	</p:dataTable>
+	</h:form>
+
+
+
+
+
+
+
 </h:body>
 
 </html>

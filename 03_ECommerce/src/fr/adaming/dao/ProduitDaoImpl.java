@@ -64,8 +64,10 @@ public class ProduitDaoImpl implements IProduitDao {
 
 	@Override
 	public List<Produit> getBySelection(Client cl) {
-		// TODO Auto-generated method stub
-		return null;
+		String req2 = "SELECT pr from Produit as pr where p.selected=true";
+		Query query2= em.createQuery(req2);
+		return query2.getResultList();
+		
 	}
 
 	// ==============================================================================
@@ -74,7 +76,7 @@ public class ProduitDaoImpl implements IProduitDao {
 
 	@Override
 	public int addProduitPanier(Client cl) {
-		// TODO Auto-generated method stub
+		
 		return 0;
 	}
 
@@ -144,6 +146,16 @@ public class ProduitDaoImpl implements IProduitDao {
 		query.setParameter("pIdCat", cat.getIdCategorie());		
 		// Envoi de la requête et récupération du résultat
 		return query.getResultList();
+	}
+
+	@Override
+	public List<Produit> motClef(String mc) {
+		
+		String req="SELECT pr FROM Produit pr WHERE pr.designation LIKE :x OR pr.description LIKE :x";
+		Query query= em.createQuery(req);
+		query.setParameter("x", "%"+mc+"%");
+		return query.getResultList();
+		
 	}
 
 	// ==============================================================================

@@ -13,7 +13,6 @@
 
 <h:body>
 
- je suis dans la page accueil
 
 
 <h:form>
@@ -27,52 +26,65 @@
 
 	<h:form>
 		<p:menuButton value="Nos propositions">
-			<p:menuitem value="Nos catégories" action="#{catMB.afficheCategorie}" url="categorie.xhtml" />
+			<p:menuitem value="Nos catégories" 
+				url="categorie.xhtml" />
 			<p:menuitem value="Nos produits" action="#{prMB.getAllProduit}"
 				url="produit.xhtml" />
 
 		</p:menuButton>
-
-
-
-		<p:dataTable var="prod" value="#{prMB.listeProduit}" rows="5"
-			paginator="true"
-			paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-			rowsPerPageTemplate="5,10,15" update="@all">
-
-			<p:column headerText="Nom du Produit">
-				<h:outputText value="#{prod.designation}" />
-			</p:column>
-
-			<p:column headerText="Description">
-				<h:outputText value="#{prod.description}" />
-			</p:column>
-
-			<p:column headerText="Prix unitaire">
-				<h:outputText value="#{prod.prix}" />
-			</p:column>
-
-			<p:column headerText="Quantité en stock">
-				<h:outputText value="#{prod.quantite}" />
-			</p:column>
-
-			<h:panelGrid>
-				<h:outputLabel for="selection" value="Selection :" />
-				<p:selectBooleanCheckbox id="checked" value="#{prMB.selectionne}" />
-				<p:commandButton value="Ajouter au panier" />
-			</h:panelGrid>
-
-
-			<f:facet name="paginatorTopLeft">
-				<p:commandButton type="button" icon="fa fa-sync" />
-			</f:facet>
-
-			<f:facet name="paginatorBottomRight">
-				<p:commandButton type="button" icon="fa fa-cloud-upload" />
-			</f:facet>
-		</p:dataTable>
 	</h:form>
 
+
+<h:form>
+
+		<h:panelGrid colums="2">
+Mot Clef:<h:inputText value="#{prMB.produit.description}" />
+			<h:commandButton value="Rechercher" action="#{prMB.RechercheMotClef}" />
+			<h:messages style="color:red" />
+		</h:panelGrid>
+
+</h:form>
+
+
+<h:form>
+<p:dataTable var="prod" value="#{prMB.listeProduit}" rows="5"
+		paginator="true"
+		paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+		rowsPerPageTemplate="5,10,15" update="@all">
+
+		<p:column headerText="Nom du Produit">
+			<h:outputText value="#{prod.designation}" />
+		</p:column>
+
+		<p:column headerText="Description">
+			<h:outputText value="#{prod.description}" />
+		</p:column>
+
+		<p:column headerText="Prix unitaire">
+			<h:outputText value="#{prod.prix}" />
+		</p:column>
+
+		<p:column headerText="Quantité en stock">
+			<h:outputText value="#{prod.quantite}" />
+		</p:column>
+
+		<p:column headerText="Ajouter au panier">
+			<p:selectBooleanCheckbox id="checked" value="#{prMB.selectionne}" />
+			<p:commandButton value="Ajouter au panier" />
+		</p:column>
+
+
+		<f:facet name="paginatorTopLeft">
+			<p:commandButton type="button" icon="fa fa-sync" />
+		</f:facet>
+
+		<f:facet name="paginatorBottomRight">
+			<p:commandButton type="button" icon="fa fa-cloud-upload" />
+		</f:facet>
+	</p:dataTable>
+	</h:form>
+
+	
 
 
 

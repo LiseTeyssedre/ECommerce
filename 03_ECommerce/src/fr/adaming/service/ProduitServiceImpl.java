@@ -106,4 +106,11 @@ public class ProduitServiceImpl implements IProduitService{
 		
 	}
 
+
+
+	@Override
+	public List<Produit> motClef(String mc) {
+		return prodDao.motClef(mc);
+	}
+
 }

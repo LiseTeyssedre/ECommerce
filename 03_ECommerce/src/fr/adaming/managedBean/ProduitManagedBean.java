@@ -41,6 +41,7 @@ public class ProduitManagedBean implements Serializable {
 	private List<Produit> listeProduit;
 	private boolean indice;
 	private Categorie cat;
+	private String mc;
 
 	public ProduitManagedBean() {
 		this.produit = new Produit();
@@ -53,13 +54,11 @@ public class ProduitManagedBean implements Serializable {
 	public void init() {
 		this.listeCategorie = catService.getListCategorie();
 		this.setListeProduit(prodService.getAllProduit());
-		this.indice=false;
+		this.indice = false;
 		// Récupérer la session
 		this.maSession = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
 		// Récupérer l'admin stocké dans la session
 		this.admin = (Administrateur) this.maSession.getAttribute("adminSession");
-		
-		
 
 	}
 
@@ -80,8 +79,6 @@ public class ProduitManagedBean implements Serializable {
 	public void setAdmin(Administrateur admin) {
 		this.admin = admin;
 	}
-	
-	
 
 	public boolean isSelectionne() {
 		return selectionne;
@@ -91,12 +88,21 @@ public class ProduitManagedBean implements Serializable {
 		this.selectionne = selectionne;
 	}
 
+	public boolean isIndice() {
+		return indice;
+	}
 
+	public void setIndice(boolean indice) {
+		this.indice = indice;
+	}
 
-	
+	public Categorie getCat() {
+		return cat;
+	}
 
-	 
-
+	public void setCat(Categorie cat) {
+		this.cat = cat;
+	}
 
 	public List<Categorie> getListeCategorie() {
 		return listeCategorie;
@@ -113,117 +119,116 @@ public class ProduitManagedBean implements Serializable {
 	public void setListeProduit(List<Produit> listeProduit) {
 		this.listeProduit = listeProduit;
 	}
-	
-	
-	 // Développement de la méthode Modifier un Produit
-	 public String updateProduit() {
-	 int verif = prodService.updateProduit(this.produit, this.admin);
-	 if (verif != 0) {
-	 // Récupérer la nouvelle liste
-	 List<Produit> liste2 = prodService.getAllProduit();
-	 // Mettre à jour la liste dans la session
-	 maSession.setAttribute("produitsListe", liste2);
-	 return "accueil";
-	 } else {
-	 return "modif";
-	 }
-	 //
-	 }
-	 
-	 // Développement de la méthode Supprimer un Produit
-	 public String deleteProduit() {
-	 int verif = prodService.deleteProduit(this.produit);
-	 if (verif != 0) {
-	 // Récupérer la nouvelle liste
-	 List<Produit> liste1 = prodService.getAllProduit();
-	 // Mettre à jour la liste dans la session
-	 maSession.setAttribute("produitsListe", liste1);
-	 return "accueil";
-	 } else {
-	 return "accueil";
-	 }
-	
-	 }
-	
-	 
-	 // Développement de la méthode GetListeProduit
-	 public String getAllProduit(){
-		 List<Produit> listeProduits=prodService.getAllProduit();
-		 //Mettre à jour la liste dans la session
-		 maSession.setAttribute("Listeproduits", listeProduits);
-		 System.out.println("======================================");
-		 return "accueil";
-	 }
-	 
-	 
-		// Développement de la méthode Ajouter un Produit
-		public String ajouterProduit() {
-			//System.out.println("--------------------- id de la cat " + this.produit.getCategorie().getIdCategorie());
-			Produit prodAjout = prodService.addProduit(this.produit);
-			return "accueilAdmin";
-			// if (prodAjout.getIdProduit() != 0) {
-			// // Récupérer la nouvelle liste de produits
-			// List<Produit> liste = prodService.getAllProduit();
-			// // Mettre à jour la liste dans la session
-			// maSession.setAttribute("produitsListe", liste);
-			// return "accueil";
-			// } else {
-			// return "accueil";
-			// }
-		}
 
-		
-		// Redéfinition de la méthode GetProduitById
-		public String getProduitByIdCategorie(){
-			try {
-				List<Produit> listeProdRech=prodService.getProduitByIdCat(cat);
-				this.indice=true;
-				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("voici la liste des produits correspondant à cette catégorie :"+listeProdRech));
-				System.out.println(produit);
-				
-			} catch (Exception ex) {
-				FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Aucun produit ne correspond à cette id"));
-			}
-		
+	
+	
+	public String getMc() {
+		return mc;
+	}
+
+	public void setMc(String mc) {
+		this.mc = mc;
+	}
+
+	// Développement de la méthode Modifier un Produit
+	public String updateProduit() {
+		int verif = prodService.updateProduit(this.produit, this.admin);
+		if (verif != 0) {
+			// Récupérer la nouvelle liste
+			List<Produit> liste2 = prodService.getAllProduit();
+			// Mettre à jour la liste dans la session
+			maSession.setAttribute("produitsListe", liste2);
 			return "accueil";
-//			
-//			public String searchClient() throws NoResultException{
-//				try{
-//					this.client=clientService.searchClient(this.client, this.agent);
-//			
-//						this.indice=true;
-//				
-//					} catch(Exception ex){
-//						FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Mais il est où ? PAS LA ! IL EST PAS LA "));
-//						this.indice=false;
-//						
-//					}
-//			
-//					return "find";
-//				}
-			
-			
-			
-			
-			
-			
-			
+		} else {
+			return "modif";
+		}
+		//
+	}
+
+	// Développement de la méthode Supprimer un Produit
+	public String deleteProduit() {
+		int verif = prodService.deleteProduit(this.produit);
+		if (verif != 0) {
+			// Récupérer la nouvelle liste
+			List<Produit> liste1 = prodService.getAllProduit();
+			// Mettre à jour la liste dans la session
+			maSession.setAttribute("produitsListe", liste1);
+			return "accueil";
+		} else {
+			return "accueil";
 		}
 
-		public boolean isIndice() {
-			return indice;
+	}
+
+	// Développement de la méthode GetListeProduit
+	public String getAllProduit() {
+		List<Produit> listeProduits = prodService.getAllProduit();
+		// Mettre à jour la liste dans la session
+		maSession.setAttribute("Listeproduits", listeProduits);
+		System.out.println("======================================");
+		return "accueil";
+	}
+
+	// Développement de la méthode Ajouter un Produit
+	public String ajouterProduit() {
+		// System.out.println("--------------------- id de la cat " +
+		// this.produit.getCategorie().getIdCategorie());
+		Produit prodAjout = prodService.addProduit(this.produit);
+		return "accueilAdmin";
+		// if (prodAjout.getIdProduit() != 0) {
+		// // Récupérer la nouvelle liste de produits
+		// List<Produit> liste = prodService.getAllProduit();
+		// // Mettre à jour la liste dans la session
+		// maSession.setAttribute("produitsListe", liste);
+		// return "accueil";
+		// } else {
+		// return "accueil";
+		// }
+	}
+
+	// Redéfinition de la méthode GetProduitById
+	public String getProduitByIdCategorie() {
+		try {
+			List<Produit> listeProdRech = prodService.getProduitByIdCat(cat);
+			this.indice = true;
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage("voici la liste des produits correspondant à cette catégorie :" + listeProdRech));
+			System.out.println(produit);
+
+		} catch (Exception ex) {
+			FacesContext.getCurrentInstance().addMessage(null,
+					new FacesMessage("Aucun produit ne correspond à cette id"));
 		}
 
-		public void setIndice(boolean indice) {
-			this.indice = indice;
-		}
+		return "accueil";
+	}
+	//
+	// public String searchClient() throws NoResultException{
+	// try{
+	// this.client=clientService.searchClient(this.client, this.agent);
+	//
+	// this.indice=true;
+	//
+	// } catch(Exception ex){
+	// FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Mais
+	// il est où ? PAS LA ! IL EST PAS LA "));
+	// this.indice=false;
+	//
+	// }
+	//
+	// return "find";
+	// }
 
-		public Categorie getCat() {
-			return cat;
-		}
+	// Rechercher un produit par mots clef
+	public String RechercheMotClef() {
+		this.listeProduit = prodService.motClef(this.mc);
+		// récupérer la nouvelle liste
+		List<Produit> listeProduits = prodService.getAllProduit();
+		// mettre a jour la liste dans la session
+		maSession.setAttribute("Listeproduits", listeProduits);
 
-		public void setCat(Categorie cat) {
-			this.cat = cat;
-		}
-	 
+		return "accueil";
+
+	}
+
 }

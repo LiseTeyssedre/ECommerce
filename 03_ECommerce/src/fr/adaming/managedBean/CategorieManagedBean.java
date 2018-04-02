@@ -92,9 +92,11 @@ public class CategorieManagedBean implements Serializable {
 	// AJOUTER UNE CATEGORIE
 	public String ajouteCategorie() {
 
+		this.categorie.setPhoto(this.uf.getContents());
 		Categorie catAjout = categorieService.addCategorie(this.categorie);
-
+		
 		if (catAjout.getIdCategorie() != 0) {
+			
 			// récupérer la nouvelle liste
 			List<Categorie> listeCategorie = categorieService.getListCategorie();
 			// mettre a jour la liste dans la session
@@ -168,12 +170,5 @@ public class CategorieManagedBean implements Serializable {
 		return "motClef";
 	}
 
-	// AJOUTER UNE PHOTO
-	public void addPhoto() {
-
-		this.categorie.setPhoto(this.uf.getContents());
-
-		return;
-	}
 
 }

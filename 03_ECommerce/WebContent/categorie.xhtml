@@ -14,13 +14,15 @@
 </h:head>
 
 <h:body>
-je suis dans la page categorie
 
-	<h:form>
 
-		<p:commandButton value="Retour à l'accueil" action="#{prMB.getAllProduit}" action="#{prMB.afficheCategorie}" url="accueil.xhtml"/>
 
-	</h:form>
+<p:button value="Retour à l'accueil" action="accueil.xhtml"/>  
+			
+
+	 	
+
+	
 
 <h:form>
     <p:dataTable var="cat" value="#{catMB.listeCategorie}" rows="5"

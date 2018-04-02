@@ -28,9 +28,16 @@ public class CategorieDaoImpl implements ICategorieDao {
 
 		// creation d'un query pour envoyer la requete
 		Query query = em.createQuery(req);
-
+		List<Categorie> listeCat=query.getResultList();
+		
+		for(Categorie cat : listeCat ) {
+			cat.setImage("data:image/png;base64,"+Base64.encodeBase64String(cat.getPhoto()));
+		}
+		
 		// envoyer la requete et récupérer le résultat
-		return query.getResultList();
+		return listeCat;
+		
+	
 
 	}
 
@@ -94,12 +101,6 @@ public class CategorieDaoImpl implements ICategorieDao {
 		return query3.getResultList();
 	}
 
-	@Override
-	public int recupImage(Categorie cat) {
-		
-		cat.setImage("data:image/png;base64,"+Base64.encodeBase64String(cat.getPhoto()));
-		
-		return 0;
-	}
+
 
 }

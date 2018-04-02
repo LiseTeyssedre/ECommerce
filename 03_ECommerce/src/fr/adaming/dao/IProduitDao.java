@@ -19,6 +19,7 @@ public interface IProduitDao {
 	public List<Produit> getBySelection(Client cl);
 	public int addProduitPanier(Client cl);
 	public int deleteProduitPanier(Client cl);
+	public List<Produit> motClef(String mc);
 	
 	
 }
