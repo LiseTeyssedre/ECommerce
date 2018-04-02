@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core">
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
 
@@ -13,7 +14,98 @@
 </h:head>
 
 <h:body>
-acceuil client
+CHER(E) CLIENT(E), BIENVENUE CHEZ YEAH/NO VEGAN !
 </h:body>
+
+
+<h1>Liste des produits disponibles</h1>
+
+
+<h:form>
+		<p:growl id="messages" />
+
+		<p:menubar>
+			<p:submenu label="Categorie" icon="ui-icon-document">
+
+				<p:menuitem value="Chaud" url="" />
+				<p:menuitem value="Chaud Vegan" url="" />
+				<p:menuitem value="Froid" url="" />
+				<p:menuitem value="Froid vegan" url="" />
+			</p:submenu>
+
+
+		</p:menubar>
+	</h:form>
+
+
+
+	<h:form>
+
+		
+	<h:panelGrid columns="10" style="margin-bottom:10px" cellpadding="20" columnClasses="label, value">
+		<p:outputLabel for="advanced" value="Rechercher un produit :" />
+        <p:selectOneListbox id="advanced" value="#{prMB.produit}" var="t" filter="true" filterMatchMode="contains">
+            <f:selectItems value="#{SessionScope.Listeproduits}" var="prod" itemLabel="#{prod.designation}" itemValue="#{prod}" />
+             <p:column>
+                <h:outputText value="#{prMB.produit.designation}" />
+            </p:column>
+        </p:selectOneListbox>    
+    </h:panelGrid>
+    <p:separator />
+ 
+    <p:commandButton value="Submit" update="display" oncomplete="PF('dlg').show()" icon="ui-icon-check" />
+ 
+    <p:dialog header="Selected Values" modal="true" showEffect="fade" widgetVar="dlg" resizable="false">
+        <p:panelGrid columns="2" id="display" columnClasses="label,output">
+
+ 
+            <h:outputText value="Produit:" />
+            <h:outputText value="#{prMB.produit}" />
+        </p:panelGrid>
+    </p:dialog>
+	
+
+	<p:dataTable var="prod" value="#{prMB.listeProduit}" rows="5"
+		paginator="true"
+		paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+		rowsPerPageTemplate="5,10,15" update="@all">
+
+		<p:column headerText="Nom du Produit">
+			<h:outputText value="#{prod.designation}" />
+		</p:column>
+
+		<p:column headerText="Description">
+			<h:outputText value="#{prod.description}" />
+		</p:column>
+
+		<p:column headerText="Prix unitaire">
+			<h:outputText value="#{prod.prix}" />
+		</p:column>
+
+		<p:column headerText="Quantité en stock">
+			<h:outputText value="#{prod.quantite}" />
+		</p:column>
+
+		<h:panelGrid>
+			<h:outputLabel for="selection" value="Selection :" />
+			<p:selectBooleanCheckbox id="checked" value="#{prMB.selectionne}" />
+			<p:commandButton value="Ajouter au panier" />
+		</h:panelGrid>
+
+
+		<f:facet name="paginatorTopLeft">
+			<p:commandButton type="button" icon="fa fa-sync" />
+		</f:facet>
+
+		<f:facet name="paginatorBottomRight">
+			<p:commandButton type="button" icon="fa fa-cloud-upload" />
+		</f:facet>
+	</p:dataTable>
+	
+	
+	
+	
+	</h:form>
+
 
 </html>

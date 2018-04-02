@@ -91,8 +91,11 @@
 		
 	<h:panelGrid columns="10" style="margin-bottom:10px" cellpadding="20" columnClasses="label, value">
 		<p:outputLabel for="advanced" value="Advanced:" />
-        <p:selectOneListbox id="advanced" value="#{prMB.listeProduit}" var="t" filter="true" filterMatchMode="contains">
-            <f:selectItems value="#{prMB.produit}" var="prod" itemLabel="#{prod.nomProduit}" itemValue="#{prod.nomProduit}" />
+        <p:selectOneListbox id="advanced" value="#{prMB.produit.idProduit}" var="t" filter="true" filterMatchMode="contains">
+            <f:selectItems value="#{SessionScope.listeProduit}" var="prod" itemLabel="#{prod.designation}" itemValue="#{prod.idProduit}" />
+             <p:column>
+                <h:outputText value="#{prMB.produit.designation}" />
+            </p:column>
         </p:selectOneListbox>    
     </h:panelGrid>
     <p:separator />
