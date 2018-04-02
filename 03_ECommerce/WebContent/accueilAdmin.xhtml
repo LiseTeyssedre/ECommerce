@@ -33,15 +33,11 @@
 				<p:menuitem value="Supprimer" url="deleteProd.xhtml" />
 				<p:menuitem value="Modifier" url="modifProd.xhtml" />
 				<p:menuitem value="Rechercher" url="searchProd.xhtml" />
-				<p:menuitem value="Par catégorie" url="searchProdByCat.xhtml"/>
+				<p:menuitem value="Par catégorie" url="searchProdByCat.xhtml" />
 			</p:submenu>
 		</p:menubar>
 	</h:form>
 
-
-	<h1>Liste des produits disponibles</h1>
-
-	<h1>AFFICHER LE TABLEAU DES PRODUITS</h1>
 
 
 
@@ -51,7 +47,7 @@
 			paginator="true"
 			paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 			rowsPerPageTemplate="5,10,15">
-			
+
 			<p:column headerText="Id">
 				<h:outputText value="#{cat.idCategorie}" />
 			</p:column>
@@ -79,8 +75,83 @@
 		</p:dataTable>
 	</h:form>
 
+	<br/>
+	<br/>
+	<br/>
+	<br/>
+	<h1>Liste des produits disponibles</h1>
+
+
+
+
+
+
+	<h:form>
+	
+		
+	<h:panelGrid columns="10" style="margin-bottom:10px" cellpadding="20" columnClasses="label, value">
+		<p:outputLabel for="advanced" value="Advanced:" />
+        <p:selectOneListbox id="advanced" value="#{prMB.listeProduit}" var="t" filter="true" filterMatchMode="contains">
+            <f:selectItems value="#{prMB.produit}" var="prod" itemLabel="#{prod.nomProduit}" itemValue="#{prod.nomProduit}" />
+        </p:selectOneListbox>    
+    </h:panelGrid>
+    <p:separator />
+ 
+    <p:commandButton value="Submit" update="display" oncomplete="PF('dlg').show()" icon="ui-icon-check" />
+ 
+    <p:dialog header="Selected Values" modal="true" showEffect="fade" widgetVar="dlg" resizable="false">
+        <p:panelGrid columns="2" id="display" columnClasses="label,output">
+
+ 
+            <h:outputText value="Produit:" />
+            <h:outputText value="#{prMB.produit}" />
+        </p:panelGrid>
+    </p:dialog>
+	
+
+	<p:dataTable var="prod" value="#{prMB.listeProduit}" rows="5"
+		paginator="true"
+		paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+		rowsPerPageTemplate="5,10,15" update="@all">
+
+		<p:column headerText="Nom du Produit">
+			<h:outputText value="#{prod.designation}" />
+		</p:column>
+
+		<p:column headerText="Description">
+			<h:outputText value="#{prod.description}" />
+		</p:column>
+
+		<p:column headerText="Prix unitaire">
+			<h:outputText value="#{prod.prix}" />
+		</p:column>
+
+		<p:column headerText="Quantité en stock">
+			<h:outputText value="#{prod.quantite}" />
+		</p:column>
+
+		<h:panelGrid>
+			<h:outputLabel for="selection" value="Selection :" />
+			<p:selectBooleanCheckbox id="checked" value="#{prMB.selectionne}" />
+			<p:commandButton value="Ajouter au panier" />
+		</h:panelGrid>
+
+
+		<f:facet name="paginatorTopLeft">
+			<p:commandButton type="button" icon="fa fa-sync" />
+		</f:facet>
+
+		<f:facet name="paginatorBottomRight">
+			<p:commandButton type="button" icon="fa fa-cloud-upload" />
+		</f:facet>
+	</p:dataTable>
+	
+	
+	
+	
+	</h:form>
+
 
 
 </h:body>
-
 </html>
