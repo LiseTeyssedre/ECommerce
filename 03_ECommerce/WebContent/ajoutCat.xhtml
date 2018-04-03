@@ -15,12 +15,13 @@
 
 <h:body>
 
-	<h:form>
+	<h:form enctype="multipart/form-data">
 
 		<h:panelGrid colums="2">
 Nom:<h:inputText value="#{catMB.categorie.nomCategorie}" />
 Description : <h:inputText value="#{catMB.categorie.description}" />
 Photo : <p:fileUpload value="#{catMB.uf}" mode="simple"></p:fileUpload>
+<p:graphicImage value="#{catMB.categorie.image}"></p:graphicImage>
 			<h:commandButton value="Ajouter" action="#{catMB.ajouteCategorie}" />
 
 		

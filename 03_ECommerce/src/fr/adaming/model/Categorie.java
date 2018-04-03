@@ -25,6 +25,7 @@ public class Categorie {
 	@Column(name="id_ca")
 	private Long idCategorie;
 	private String nomCategorie;
+	@Lob
 	private byte[] photo;
 	private String description;
 	@Transient

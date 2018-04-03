@@ -93,14 +93,16 @@ public class CategorieManagedBean implements Serializable {
 	public String ajouteCategorie() {
 
 		this.categorie.setPhoto(this.uf.getContents());
+		
 		Categorie catAjout = categorieService.addCategorie(this.categorie);
+		
 		
 		if (catAjout.getIdCategorie() != 0) {
 			
 			// récupérer la nouvelle liste
-			List<Categorie> listeCategorie = categorieService.getListCategorie();
-			// mettre a jour la liste dans la session
-			maSession.setAttribute("categorieListe", listeCategorie);
+			List<Categorie> listeCate = categorieService.getListCategorie();
+			
+			this.listeCategorie = listeCate;
 
 			return "categorie";
 		} else {

@@ -22,9 +22,8 @@ public class CategorieDaoImpl implements ICategorieDao {
 	@Override
 	public List<Categorie> getListCategorie() {
 
-		
 		// la requete jpql
-		String req = "SELECT cat FROM Categorie as cat";
+		String req = "SELECT cat FROM Categorie cat";
 
 		// creation d'un query pour envoyer la requete
 		Query query = em.createQuery(req);

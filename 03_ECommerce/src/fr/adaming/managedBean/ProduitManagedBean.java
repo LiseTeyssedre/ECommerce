@@ -231,4 +231,6 @@ public class ProduitManagedBean implements Serializable {
 
 	}
 
+	
+	
 }
