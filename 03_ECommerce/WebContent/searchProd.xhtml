@@ -15,34 +15,38 @@
 	<h:form>
 		<h:panelGrid columns="2">
 Id du Produit Recherché : <h:inputText value="#{prMB.produit.idProduit}" />
-			<p:commandButton value="Rechercher" action="#{prMB.getProduitByIdCategorie}"
-				update="@all" />
+			<p:commandButton value="Rechercher" action="#{prMB.produitById}"/>
 		</h:panelGrid>
 
-	</h:form>
+	
 
 	<h:form>
 		<p:dataTable var="prod" value="#{prMB.produit}"
-			rendered="#{cMB.indice}">
-			<p:column headerText="nom du Produit">
-				<h:outputText value="#{prod.nomProduit}" />
+			 update="@All">
+			 
+		<p:column headerText="Id">
+				<h:outputText value="#{prod.idProduit}" />
 			</p:column>
 
-			<p:column headerText="">
-				<h:outputText value="#{cl.nom}" />
-			</p:column>
+		<p:column headerText="Nom du Produit">
+			<h:outputText value="#{prod.designation}" />
+		</p:column>
 
-			<p:column headerText="Prenom">
-				<h:outputText value="#{cl.prenom}" />
-			</p:column>
+		<p:column headerText="Description">
+			<h:outputText value="#{prod.description}" />
+		</p:column>
 
-			<p:column headerText="Date de naissance">
-				<h:outputText value="#{cl.dn}" />
-			</p:column>
+		<p:column headerText="Prix unitaire">
+			<h:outputText value="#{prod.prix}" />
+		</p:column>
+
+		<p:column headerText="Quantité en stock">
+			<h:outputText value="#{prod.quantite}" />
+		</p:column>
 		</p:dataTable>
 
 
-
+</h:form>
 
 	</h:form>
 

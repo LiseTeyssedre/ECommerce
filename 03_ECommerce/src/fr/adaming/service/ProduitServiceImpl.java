@@ -92,9 +92,8 @@ public class ProduitServiceImpl implements IProduitService{
 
 
 	@Override
-	public int updateProduit(Produit produit, Administrateur a) {
-		//
-		produit.setAdmin(a);
+	public int updateProduit(Produit produit) {
+	
 		return prodDao.updateProduit(produit);
 	}
 
@@ -111,6 +110,14 @@ public class ProduitServiceImpl implements IProduitService{
 	@Override
 	public List<Produit> motClef(String mc) {
 		return prodDao.motClef(mc);
+	}
+
+
+
+	@Override
+	public Produit getProduitById(Produit pr) {
+		
+		return prodDao.getProduitById(pr);
 	}
 
 }

@@ -40,9 +40,9 @@ public class ProduitDaoImpl implements IProduitDao {
 	// Redéfinition de la méthode deleteProduit
 	@Override
 	public int deleteProduit(Produit produit) {
-		System.out.println("========= PRODUIT DAO IMPL =======");
+		
 		// Création de la requête
-		String req = "DELETE Produit as pr WHERE pr.idProduit=:pIdProd";
+		String req = "DELETE FROM Produit as pr WHERE pr.idProduit=:pIdProd";
 
 		// Création du Query
 		Query query = em.createQuery(req);
@@ -50,11 +50,9 @@ public class ProduitDaoImpl implements IProduitDao {
 		// Passage des paramètres
 		query.setParameter("pIdProd", produit.getIdProduit());
 	
-
-
 		// Envoi de la requête et récupération du résultat
-		int verif = query.executeUpdate();
-		return verif;
+		
+		return query.executeUpdate();
 
 	}
 
@@ -137,7 +135,7 @@ public class ProduitDaoImpl implements IProduitDao {
 
 	// Redéfinition de la méthode getProduitById
 	@Override
-	public List<Produit> getProduitByIdCategorie(Categorie cat) {
+	public List<Produit> getProduitByIdCategorie(Categorie cat) {;
 		//Création de la requête 
 		String req="SELECT * FROM Produit as pr WHERE pr.categorie.idCategorie=:pIdCat";
 		//Création du query
@@ -156,6 +154,12 @@ public class ProduitDaoImpl implements IProduitDao {
 		query.setParameter("x", "%"+mc+"%");
 		return query.getResultList();
 		
+	}
+
+	@Override
+	public Produit getProduitById(Produit pr) {
+		
+		return em.find(Produit.class, pr.getIdProduit());
 	}
 
 	// ==============================================================================

@@ -40,6 +40,11 @@ public class LigneCommande {
 		this.prix = prix;
 	}
 	
+	public LigneCommande(Produit produit, int quantite) {
+		super();
+		this.quantite = quantite;
+		this.produit = produit;
+	}
 	
 	public LigneCommande(int quantite, double prix, Commande commande, Produit produit) {
 		super();
@@ -48,6 +53,14 @@ public class LigneCommande {
 		this.commande = commande;
 		this.produit = produit;
 	}
+	
+	public LigneCommande(int quantite, double prix, Produit produit) {
+		super();
+		this.quantite = quantite;
+		this.prix = prix;
+		this.produit = produit;
+	}
+	
 	public LigneCommande(int id, int quantite, double prix, Commande commande, Produit produit) {
 		super();
 		this.id = id;

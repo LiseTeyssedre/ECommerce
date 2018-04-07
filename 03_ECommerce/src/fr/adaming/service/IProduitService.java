@@ -12,7 +12,7 @@ import fr.adaming.model.Produit;
 @Local
 public interface IProduitService {
 	
-	public int updateProduit(Produit produit, Administrateur a);
+	public int updateProduit(Produit produit);
 	public List<Produit> getProduitByIdCat(Categorie cat);
 	public Produit addProduit(Produit produit);
 	public List<Produit> getAllProduit();
@@ -21,4 +21,5 @@ public interface IProduitService {
 	public int addProduitPanier(Client cl);
 	public int deleteProduitPanier(Client cl);
 	public List<Produit> motClef(String mc);
+	public Produit getProduitById (Produit pr);
 }

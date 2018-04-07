@@ -120,8 +120,6 @@ public class ProduitManagedBean implements Serializable {
 		this.listeProduit = listeProduit;
 	}
 
-	
-	
 	public String getMc() {
 		return mc;
 	}
@@ -132,15 +130,15 @@ public class ProduitManagedBean implements Serializable {
 
 	// Développement de la méthode Modifier un Produit
 	public String updateProduit() {
-		int verif = prodService.updateProduit(this.produit, this.admin);
+		int verif = prodService.updateProduit(this.produit);
 		if (verif != 0) {
 			// Récupérer la nouvelle liste
-			List<Produit> liste2 = prodService.getAllProduit();
+			List<Produit> listeProduits = prodService.getAllProduit();
 			// Mettre à jour la liste dans la session
-			maSession.setAttribute("produitsListe", liste2);
-			return "accueil";
+			maSession.setAttribute("produitsListe", listeProduits);
+			return "accueilAdmin";
 		} else {
-			return "modif";
+			return "modifProd";
 		}
 		//
 	}
@@ -148,14 +146,15 @@ public class ProduitManagedBean implements Serializable {
 	// Développement de la méthode Supprimer un Produit
 	public String deleteProduit() {
 		int verif = prodService.deleteProduit(this.produit);
+
 		if (verif != 0) {
 			// Récupérer la nouvelle liste
-			List<Produit> liste1 = prodService.getAllProduit();
+			List<Produit> listeProduits = prodService.getAllProduit();
 			// Mettre à jour la liste dans la session
-			maSession.setAttribute("produitsListe", liste1);
-			return "accueil";
+			maSession.setAttribute("produitsListe", listeProduits);
+			return "accueilAdmin";
 		} else {
-			return "accueil";
+			return "accueilAdmin";
 		}
 
 	}
@@ -174,6 +173,11 @@ public class ProduitManagedBean implements Serializable {
 		// System.out.println("--------------------- id de la cat " +
 		// this.produit.getCategorie().getIdCategorie());
 		Produit prodAjout = prodService.addProduit(this.produit);
+		//récuperer la liste
+		List<Produit> listeProduits = prodService.getAllProduit();
+		// Mettre à jour la liste dans la session
+		maSession.setAttribute("Listeproduits", listeProduits);
+
 		return "accueilAdmin";
 		// if (prodAjout.getIdProduit() != 0) {
 		// // Récupérer la nouvelle liste de produits
@@ -187,21 +191,33 @@ public class ProduitManagedBean implements Serializable {
 	}
 
 	// Redéfinition de la méthode GetProduitById
-	public String getProduitByIdCategorie() {
-		try {
-			List<Produit> listeProdRech = prodService.getProduitByIdCat(cat);
-			this.indice = true;
-			FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage("voici la liste des produits correspondant à cette catégorie :" + listeProdRech));
-			System.out.println(produit);
+	public String getProduitById() {
+		
+		Produit prRec = prodService.getProduitById(this.produit);
 
-		} catch (Exception ex) {
-			FacesContext.getCurrentInstance().addMessage(null,
-					new FacesMessage("Aucun produit ne correspond à cette id"));
+		if (prRec != null) {
+			this.produit = prRec;
+			return "searchProd";
+		} else {
+			return "accueilAdmin";
 		}
-
-		return "accueil";
 	}
+		
+		
+//		try {
+//			List<Produit> listeProdRech = prodService.getProduitByIdCat(cat);
+//			this.indice = true;
+//			FacesContext.getCurrentInstance().addMessage(null,
+//					new FacesMessage("voici la liste des produits correspondant à cette catégorie :" + listeProdRech));
+//			System.out.println(produit);
+//
+//		} catch (Exception ex) {
+//			FacesContext.getCurrentInstance().addMessage(null,
+//					new FacesMessage("Aucun produit ne correspond à cette id"));
+//		}
+//
+//		return "accueil";
+//	}
 	//
 	// public String searchClient() throws NoResultException{
 	// try{
@@ -231,6 +247,12 @@ public class ProduitManagedBean implements Serializable {
 
 	}
 
-	
-	
+	// AFFICHE UN PRODUIT PAR SON ID
+	public String affficheProduit() {
+
+		Produit prRec = prodService.getProduitById(this.produit);
+
+		return "selection";
+	}
+
 }

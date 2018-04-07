@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+
+	<title>Panier</title>
+
+</h:head>
+
+<h:body>
+
+	<h1 style="color: red; text-align: center">Votre panier</h1>
+
+	<h:form>
+		<p:dataTable var="lc" value="#{panMB.listLigneComm}" rows="5"
+			paginator="true"
+			paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+			rowsPerPageTemplate="5,10,15" update="@all">
+
+			<p:column headerText="ID">
+				<h:outputText value="#{lc.id}" />
+			</p:column>
+
+			<p:column headerText="Quantité">
+				<h:outputText value="#{lc.quantite}" />
+			</p:column>
+
+			<p:column headerText="Prix">
+				<h:outputText value="#{lc.prix}" />
+			</p:column>
+			
+			<p:column headerText="Produit">
+				<h:outputText value="#{lc.produit.designation}" />
+			</p:column>
+			
+			<p:column headerText="Description">
+				<h:outputText value="#{lc.produit.description}" />
+			</p:column>
+			
+			<p:column headerText="Photo">
+         <h:graphicImage value="#{lc.produit.photo}"/>
+        </p:column>
+
+			<f:facet name="paginatorTopLeft">
+				<p:commandButton type="button" icon="fa fa-sync" />
+			</f:facet>
+
+			<f:facet name="paginatorBottomRight">
+				<p:commandButton type="button" icon="fa fa-cloud-upload" />
+			</f:facet>
+		</p:dataTable>
+	</h:form>
+
+
+
+
+
+
+</h:body>
+
+</html>

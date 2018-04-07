@@ -20,6 +20,6 @@ public interface IProduitDao {
 	public int addProduitPanier(Client cl);
 	public int deleteProduitPanier(Client cl);
 	public List<Produit> motClef(String mc);
-	
+	public Produit getProduitById (Produit pr);
 	
 }

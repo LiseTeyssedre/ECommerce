@@ -38,7 +38,7 @@
 <h:form>
 
 		<h:panelGrid colums="2">
-Mot Clef:<h:inputText value="#{prMB.produit.description}" />
+Mot Clef:<h:inputText value="#{prMB.produit.designation}" />
 			<h:commandButton value="Rechercher" action="#{prMB.RechercheMotClef}" />
 			<h:messages style="color:red" />
 		</h:panelGrid>
@@ -51,6 +51,10 @@ Mot Clef:<h:inputText value="#{prMB.produit.description}" />
 		paginator="true"
 		paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
 		rowsPerPageTemplate="5,10,15" update="@all">
+
+<p:column headerText="ID du Produit">
+			<h:outputText value="#{prod.idProduit}" />
+		</p:column>
 
 		<p:column headerText="Nom du Produit">
 			<h:outputText value="#{prod.designation}" />
@@ -68,9 +72,13 @@ Mot Clef:<h:inputText value="#{prMB.produit.description}" />
 			<h:outputText value="#{prod.quantite}" />
 		</p:column>
 
-		<p:column headerText="Ajouter au panier">
-			<p:selectBooleanCheckbox id="checked" value="#{prMB.selectionne}" />
-			<p:commandButton value="Ajouter au panier" />
+		<p:column headerText="Selectionne produit">
+		<!--  	<p:selectBooleanCheckbox id="checked" value="#{prMB.selectionne}" /> -->
+			<h:commandButton value="selection" action="#{prMB.affficheProduit}">
+			<f:setPropertyActionListener value="#{prod}" target="#{prMB.produit}"></f:setPropertyActionListener>
+			
+
+			</h:commandButton>
 		</p:column>
 
 

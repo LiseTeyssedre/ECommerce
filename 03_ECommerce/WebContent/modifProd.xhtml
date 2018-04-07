@@ -12,14 +12,14 @@
 </h:head>
 
 <h:body>
-
+<h:form>
 	<h:panelGrid columns="2">
 			Id du produit à modifier : <h:inputText value="#{prMB.produit.idProduit}"/>
 			Designation : <h:inputText value="#{prMB.produit.designation}" />
 			Description : <h:inputText value="#{prMB.produit.description}" />
 			Catégorie : 
 		<h:selectOneMenu value="#{prMB.produit.categorie.idCategorie}">
-			<f:selectItems value="#{sessionScope.catListeSession}" var="c"
+			<f:selectItems value="#{catMB.listeCategorie}" var="c"
 				itemLabel="#{c.nomCategorie}" itemValue="#{c.idCategorie}" />
 		</h:selectOneMenu>
 		
@@ -28,7 +28,7 @@
 
 		<h:commandButton value="Modifier le produit" action="#{prMB.updateProduit}"></h:commandButton>
 	</h:panelGrid>
-
+</h:form>
 
 </h:body>
 </html>
