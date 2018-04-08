@@ -254,5 +254,20 @@ public class ProduitManagedBean implements Serializable {
 
 		return "selection";
 	}
+	
+//	//Rechercher les produits par catégorie 
+//	public String searchProdByCat(){
+//		Categorie cat1=catService.searchCategorie(cat);
+//		if (cat1!=null){
+//			// Récupérer la nouvelle liste
+//			List<Produit> listeProduitsByCat=prodService.getProduitByIdCat(this.cat);
+//			//Mettre à jour la liste dans la session
+//			maSession.setAttribute("ListeproduitsByCat", listeProduitsByCat);
+//			return "searchProdByCat";
+//		} else {
+//			return "accueilAdmin";
+//		}
+//
+//	}
 
 }

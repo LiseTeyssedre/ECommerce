@@ -95,7 +95,7 @@ public class AdminManagedBean implements Serializable {
 			return "succes";
 			
 			
-			
+		
 		} else {
 			return "echec";
 		}

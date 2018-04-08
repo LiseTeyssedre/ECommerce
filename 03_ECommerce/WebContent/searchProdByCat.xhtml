@@ -16,12 +16,37 @@
 Je suis dans la page rechercher les produits par catégorie 
 	<h:form>
 		<h:panelGrid columns="2">
-Id de la catégorie recherchée : <h:inputText value="#{prMB.produit.categorie.idCategorie}" />
-			<p:commandButton value="Rechercher" action="#{prMB.getProduitById}" update="@all"/>
+Id de la catégorie recherchée : <h:inputText
+				value="#{prMB.produit.categorie.idCategorie}" />
+			<h:commandButton value="Rechercher" action="#{prMB.searchProdByCat}"
+				update="@All" />
 		</h:panelGrid>
 
+
+		<h:form>
+			<p:dataTable var="prod" value="#{prMB.produit}" update="@All">
+
+				<p:column headerText="Id">
+					<h:outputText value="#{prod.idProduit}" />
+				</p:column>
+
+				<p:column headerText="Nom du Produit">
+					<h:outputText value="#{prod.designation}" />
+				</p:column>
+
+				<p:column headerText="Description">
+					<h:outputText value="#{prod.description}" />
+				</p:column>
+
+				<p:column headerText="Prix unitaire">
+					<h:outputText value="#{prod.prix}" />
+				</p:column>
+
+				<p:column headerText="Quantité en stock">
+					<h:outputText value="#{prod.quantite}" />
+				</p:column>
+			</p:dataTable>
+		</h:form>
 	</h:form>
-
-
 </h:body>
 </html>

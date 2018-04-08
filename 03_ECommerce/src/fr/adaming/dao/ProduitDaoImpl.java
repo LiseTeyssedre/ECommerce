@@ -137,7 +137,7 @@ public class ProduitDaoImpl implements IProduitDao {
 	@Override
 	public List<Produit> getProduitByIdCategorie(Categorie cat) {;
 		//Création de la requête 
-		String req="SELECT * FROM Produit as pr WHERE pr.categorie.idCategorie=:pIdCat";
+		String req="SELECT pr FROM Produit as pr WHERE pr.categorie.idCategorie=:pIdCat";
 		//Création du query
 		Query query=em.createQuery(req);
 		//Passage des paramètres 
@@ -158,8 +158,8 @@ public class ProduitDaoImpl implements IProduitDao {
 
 	@Override
 	public Produit getProduitById(Produit pr) {
-		
 		return em.find(Produit.class, pr.getIdProduit());
+
 	}
 
 	// ==============================================================================
