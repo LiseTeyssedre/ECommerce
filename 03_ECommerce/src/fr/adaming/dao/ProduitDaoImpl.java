@@ -40,7 +40,7 @@ public class ProduitDaoImpl implements IProduitDao {
 	// Redéfinition de la méthode deleteProduit
 	@Override
 	public int deleteProduit(Produit produit) {
-	
+		
 		// Création de la requête
 		String req = "DELETE FROM Produit as pr WHERE pr.idProduit=:pIdProd";
 
@@ -155,7 +155,7 @@ public class ProduitDaoImpl implements IProduitDao {
 		return query.getResultList();
 		
 	}
-	
+
 	@Override
 	public Produit getProduitById(Produit pr) {
 		

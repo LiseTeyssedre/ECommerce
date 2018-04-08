@@ -62,7 +62,7 @@
 			</p:column>
 
 			<p:column headerText="Photo">
-				<h:outputText value="#{cat.photo}" />
+				 <h:graphicImage value="#{cat.image}"/>
 			</p:column>
 
 			<f:facet name="paginatorTopLeft">
@@ -74,6 +74,10 @@
 			</f:facet>
 		</p:dataTable>
 	</h:form>
+
+
+
+
 
 	<br/>
 	<br/>
@@ -111,11 +115,18 @@
         </p:panelGrid>
     </p:dialog>
 	
+	</h:form>
 
-	<p:dataTable var="prod" value="#{prMB.listeProduit}" rows="5"
-		paginator="true"
-		paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-		rowsPerPageTemplate="5,10,15" update="@all">
+	<h1>Liste des produits</h1>
+	<h:form>
+		<p:dataTable var="prod" value="#{prMB.listeProduit}" rows="5"
+			paginator="true"
+			paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+			rowsPerPageTemplate="5,10,15">
+
+			<p:column headerText="Id">
+				<h:outputText value="#{prod.idProduit}" />
+			</p:column>
 
 		<p:column headerText="Nom du Produit">
 			<h:outputText value="#{prod.designation}" />

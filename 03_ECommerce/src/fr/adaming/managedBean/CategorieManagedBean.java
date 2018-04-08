@@ -104,7 +104,7 @@ public class CategorieManagedBean implements Serializable {
 			
 			this.listeCategorie = listeCate;
 
-			return "categorie";
+			return "accueilAdmin";
 		} else {
 
 			// le message en cas d'echec
