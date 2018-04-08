@@ -45,13 +45,14 @@ public class ProduitManagedBean implements Serializable {
 	private boolean indice;
 	private Categorie cat;
 	private String mc;
-//	private UploadedFile uf;
+	private UploadedFile uf;
 
 	
 	public ProduitManagedBean() {
 		this.produit = new Produit();
-	//	this.uf=new UploadedFileWrapper();
+		this.uf=new UploadedFileWrapper();
 		this.produit.setCategorie(new Categorie());
+//		this.setUf(new UploadedFileWrapper());
 		
 	}
 
@@ -135,14 +136,15 @@ public class ProduitManagedBean implements Serializable {
 		this.mc = mc;
 	}
 	
+	public UploadedFile getUf() {
+		return uf;
+	}
 
-//	public UploadedFile getUf() {
-//		return uf;
-//	}
+	public void setUf(UploadedFile uf) {
+		this.uf = uf;
+	}
+	
 
-//	public void setUf(UploadedFile uf) {
-//		this.uf = uf;
-//	}
 
 	// Développement de la méthode Modifier un Produit
 	public String updateProduit() {
@@ -187,25 +189,21 @@ public class ProduitManagedBean implements Serializable {
 	// Développement de la méthode Ajouter un Produit
 	public String ajouterProduit() {
 		
-//		this.produit.setPhoto(this.uf.getContents());
-		// System.out.println("--------------------- id de la cat " +
-		// this.produit.getCategorie().getIdCategorie());
+		this.produit.setPhoto(this.uf.getContents());
 		Produit prodAjout = prodService.addProduit(this.produit);
-		//récuperer la liste
-		List<Produit> listeProduits = prodService.getAllProduit();
-		// Mettre à jour la liste dans la session
-		maSession.setAttribute("Listeproduits", listeProduits);
+		
+		if (prodAjout.getIdProduit()!=0){
+			//récuperer la liste
+			List<Produit> listeProduits = prodService.getAllProduit();
+			// Mettre à jour la liste dans la session
+			this.listeProduit=listeProduits;
+			return "accueilAdmin";
+		} else {
+			// Le message en cas d'échec 
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Ajout impossible"));
+			return "produit";
+		}
 
-		return "accueilAdmin";
-		// if (prodAjout.getIdProduit() != 0) {
-		// // Récupérer la nouvelle liste de produits
-		// List<Produit> liste = prodService.getAllProduit();
-		// // Mettre à jour la liste dans la session
-		// maSession.setAttribute("produitsListe", liste);
-		// return "accueil";
-		// } else {
-		// return "accueil";
-		// }
 	}
 
 	// Redéfinition de la méthode GetProduitById
@@ -272,6 +270,8 @@ public class ProduitManagedBean implements Serializable {
 
 		return "selection";
 	}
+
+
 	
 //	//Rechercher les produits par catégorie 
 //	public String searchProdByCat(){

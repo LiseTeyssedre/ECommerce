@@ -33,6 +33,10 @@
 			<h:outputText value="#{prod.prix}" />
 		</p:column>
 
+        <p:column headerText="Photo">
+         <h:graphicImage value="#{prod.image}"/>
+        </p:column>
+        
 		<p:column headerText="Quantité en stock">
 			<h:outputText value="#{prod.quantite}" />
 		</p:column>

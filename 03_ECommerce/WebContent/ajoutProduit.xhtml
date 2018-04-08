@@ -12,26 +12,28 @@
 
 <h:body>
 
-<h2>AJOUTER UN PRODUIT</h2>
+	<h2>AJOUTER UN PRODUIT</h2>
 
-	<h:form>
+	<h:form enctype="multipart/form-data">
 
 		<h:panelGrid columns="2">
-			Designation : <h:inputText value="#{prMB.produit.designation}"/>
+			Designation : <h:inputText value="#{prMB.produit.designation}" />
 			Description : <h:inputText value="#{prMB.produit.description}" />
 			Catégorie : 
-						<h:selectOneMenu  value="#{prMB.produit.categorie.idCategorie}">
-								<f:selectItems value="#{catMB.listeCategorie}" var="c" itemLabel="#{c.nomCategorie}" itemValue="#{c.idCategorie}"/>
-						</h:selectOneMenu>
+						<h:selectOneMenu value="#{prMB.produit.categorie.idCategorie}">
+				<f:selectItems value="#{catMB.listeCategorie}" var="c"
+					itemLabel="#{c.nomCategorie}" itemValue="#{c.idCategorie}" />
+			</h:selectOneMenu>
 
 			Prix : <h:inputText value="#{prMB.produit.prix}" />
 
 			Quantité en stock : <h:inputText value="#{prMB.produit.quantite}" />
-			
-	
-			
-			<h:commandButton value="Ajouter" action="#{prMB.ajouterProduit}"></h:commandButton>
-			 
+			Photo : <p:fileUpload value="#{prMB.uf}" mode="simple"></p:fileUpload>
+			<p:graphicImage value="#{prMB.produit.image}"></p:graphicImage>
+
+
+			<h:commandButton value="Ajouter" action="#{prMB.ajouterProduit}"/>
+
 		</h:panelGrid>
 
 

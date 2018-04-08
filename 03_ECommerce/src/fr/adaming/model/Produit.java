@@ -1,5 +1,6 @@
 package fr.adaming.model;
 
+import java.util.Arrays;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -60,6 +61,7 @@ public class Produit {
 		this.selectionne = selectionne;
 		this.photo = photo;
 	}
+
 
 	public Produit(Long idProduit, String designation, String description, double prix, int quantite,
 			boolean selectionne, byte[] photo) {
@@ -162,5 +164,15 @@ public class Produit {
 		this.image = image;
 	}
 
+	@Override
+	public String toString() {
+		return "Produit [idProduit=" + idProduit + ", designation=" + designation + ", description=" + description
+				+ ", prix=" + prix + ", quantite=" + quantite + ", selectionne=" + selectionne + ", photo="
+				+ Arrays.toString(photo) + ", image=" + image + ", categorie=" + categorie + ", admin=" + admin
+				+ ", listeLigneCommande=" + listeLigneCommande + "]";
+	}
+
+	
+	
 
 }

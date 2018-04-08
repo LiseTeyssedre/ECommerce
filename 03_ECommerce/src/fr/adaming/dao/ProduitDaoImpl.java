@@ -32,10 +32,10 @@ public class ProduitDaoImpl implements IProduitDao {
 		// Création du query
 		Query query = em.createQuery(req);
 		List<Produit> listeProd=query.getResultList();
-		
-	//	for(Produit pr : listeProd){
-	//		pr.setImage("data:image/png;base64,"+Base64.encodeBase64String(pr.getPhoto()));
-	//	}
+		for(Produit prod : listeProd ) {
+			prod.setImage("data:image/png;base64,"+Base64.encodeBase64String(prod.getPhoto()));
+		}
+
 
 		return listeProd;
 	}
@@ -101,7 +101,6 @@ public class ProduitDaoImpl implements IProduitDao {
 
 	@Override
 	public Produit addProduit(Produit produit) {
-		System.out.println("--------------------- dao");
 		// Création de la requête
 		em.persist(produit);
 		return produit;
