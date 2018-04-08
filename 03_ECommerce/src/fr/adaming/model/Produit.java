@@ -9,6 +9,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -29,7 +30,10 @@ public class Produit {
 	private int quantite;
 	@Transient
 	private boolean selectionne=false;
+	@Lob
 	private byte[] photo;
+	@Transient
+	private String image;
 
 	// transformation de l'association UML en Java
 	@ManyToOne
@@ -148,6 +152,14 @@ public class Produit {
 
 	public void setListeLigneCommande(List<LigneCommande> listeLigneCommande) {
 		this.listeLigneCommande = listeLigneCommande;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
 	}
 
 

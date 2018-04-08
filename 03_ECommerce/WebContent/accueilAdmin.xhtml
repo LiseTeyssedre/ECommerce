@@ -144,6 +144,10 @@
 			<h:outputText value="#{prod.quantite}" />
 		</p:column>
 
+<p:column headerText="Photo">
+				 <h:graphicImage value="#{prod.image}"/>
+			</p:column>
+
 		<h:panelGrid>
 			<h:outputLabel for="selection" value="Selection :" />
 			<p:selectBooleanCheckbox id="checked" value="#{prMB.selectionne}" />

@@ -32,11 +32,13 @@ public class CategorieManagedBean implements Serializable {
 	HttpSession maSession;
 	private Administrateur admin;
 	private UploadedFile uf;
+	
 
 	// constructeur
 	public CategorieManagedBean() {
 		this.categorie = new Categorie();
-		this.uf = new UploadedFileWrapper();
+		this.uf=new UploadedFileWrapper();
+		
 	}
 
 	@PostConstruct
@@ -65,7 +67,6 @@ public class CategorieManagedBean implements Serializable {
 	public void setListeCategorie(List<Categorie> listeCategorie) {
 		this.listeCategorie = listeCategorie;
 	}
-
 	public UploadedFile getUf() {
 		return uf;
 	}
@@ -75,6 +76,8 @@ public class CategorieManagedBean implements Serializable {
 	}
 
 	// méthodes métier
+
+
 
 	// AFFICHER LISTE CATEGORIE
 	public String afficheCategorie() {

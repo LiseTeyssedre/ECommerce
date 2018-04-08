@@ -14,6 +14,9 @@ import javax.persistence.NoResultException;
 import javax.servlet.http.HttpSession;
 import javax.validation.constraints.AssertTrue;
 
+import org.primefaces.model.UploadedFile;
+import org.primefaces.model.UploadedFileWrapper;
+
 import fr.adaming.model.Administrateur;
 import fr.adaming.model.Categorie;
 import fr.adaming.model.Produit;
@@ -42,10 +45,14 @@ public class ProduitManagedBean implements Serializable {
 	private boolean indice;
 	private Categorie cat;
 	private String mc;
+//	private UploadedFile uf;
 
+	
 	public ProduitManagedBean() {
 		this.produit = new Produit();
+	//	this.uf=new UploadedFileWrapper();
 		this.produit.setCategorie(new Categorie());
+		
 	}
 
 	// Récupération de la session existante
@@ -127,6 +134,15 @@ public class ProduitManagedBean implements Serializable {
 	public void setMc(String mc) {
 		this.mc = mc;
 	}
+	
+
+//	public UploadedFile getUf() {
+//		return uf;
+//	}
+
+//	public void setUf(UploadedFile uf) {
+//		this.uf = uf;
+//	}
 
 	// Développement de la méthode Modifier un Produit
 	public String updateProduit() {
@@ -170,6 +186,8 @@ public class ProduitManagedBean implements Serializable {
 
 	// Développement de la méthode Ajouter un Produit
 	public String ajouterProduit() {
+		
+//		this.produit.setPhoto(this.uf.getContents());
 		// System.out.println("--------------------- id de la cat " +
 		// this.produit.getCategorie().getIdCategorie());
 		Produit prodAjout = prodService.addProduit(this.produit);
