@@ -39,6 +39,7 @@
 
 		<f:facet name="paginatorBottomRight">
 			<p:commandButton type="button" icon="fa fa-cloud-upload" />
+			
 		</f:facet>
 	</p:dataTable>
 	</h:form>
@@ -46,7 +47,9 @@
 <h:form>
 <h:panelGrid columns="2">
 Quantité souhaitée:<h:inputText value="#{panMB.qt}"/>
+
 <h:commandButton value="Ajouter le produit au panier" action="#{panMB.ajoutLc}">
+
 </h:commandButton>
 <h:messages style="color:red"/>
 </h:panelGrid>
