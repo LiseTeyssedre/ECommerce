@@ -19,6 +19,7 @@ import fr.adaming.service.IProduitService;
 @RequestScoped
 public class AdminManagedBean implements Serializable {
 
+	
 	// Transformation de l'association UML en Java
 	@EJB
 	private IAdminService adminService;
